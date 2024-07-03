@@ -1,8 +1,8 @@
-package 프로젝트2.View;
+package view;
 
-import DAY16.controller.MemberController;
-import 프로젝트2.Controller.MenuController;
-import 프로젝트2.Model.Dto.MySkillDto;
+
+import controller.MenuController;
+import model.dto.MySkillDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,7 +29,7 @@ public class MenuView {
 
     //1. 캐릭터 정보 함수
     public void charinfo(){
-        ArrayList<프로젝트2.Model.Dto.CharacterDto> result = MenuController.MController.charinfo();
+        ArrayList<model.dto.CharacterDto> result = MenuController.MController.charinfo();
 
         if (result.isEmpty()){
             System.out.println("없는 정보입니다.");
@@ -44,7 +44,7 @@ public class MenuView {
     public void godungeon(){
         System.out.println("던전으로 이동합니다");
         System.out.println("==========================");
-        ChoiceDungeonView.CDView.index3();
+//        ChoiceDungeonView.CDView.index3();
     }
     //3. 스킬정보 함수
     public void skillinfo(){

@@ -1,6 +1,6 @@
-package 프로젝트2.Model.Dao;
+package model.dao;
 
-import 프로젝트2.Model.Dto.MySkillDto;
+import model.dto.MySkillDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,8 +28,8 @@ PreparedStatement ps;
 ResultSet rs;
 
     //1. 캐릭터 정보 함수
-    public ArrayList<프로젝트2.Model.Dto.CharacterDto> charinfo(int ckey){
-        ArrayList<프로젝트2.Model.Dto.CharacterDto> list = new ArrayList<>();
+    public ArrayList<model.dto.CharacterDto> charinfo(int ckey){
+        ArrayList<model.dto.CharacterDto> list = new ArrayList<>();
 
         try{
             String sql = "select * from mycharacter where ckey = ?";
@@ -37,7 +37,7 @@ ResultSet rs;
             ps.setInt(1,ckey);
             rs = ps.executeQuery();
             while(rs.next()){
-                프로젝트2.Model.Dto.CharacterDto characterDTO = new 프로젝트2.Model.Dto.CharacterDto();
+                model.dto.CharacterDto characterDTO = new model.dto.CharacterDto();
                 characterDTO.setCkey(rs.getInt("ckey"));
                 characterDTO.setCnickname(rs.getString("cnickname"));
                 characterDTO.setChp(rs.getInt("chp"));

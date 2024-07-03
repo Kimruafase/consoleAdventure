@@ -1,12 +1,12 @@
-package 프로젝트2.Controller;
+package controller;
 
-import 프로젝트2.Model.Dao.CharacterDAO;
+import model.dao.CharacterDAO;
 
 public class CharacterController {
     public static CharacterController cController = new CharacterController();
 
     //1. 캐릭터생성함수
-    public boolean createChar(프로젝트2.Model.Dto.CharacterDto characterDTO){
+    public boolean createChar(model.dto.CharacterDto characterDTO){
         boolean result = CharacterDAO.characterDAO.createChar(characterDTO);
         return result;
     }
@@ -14,7 +14,7 @@ public class CharacterController {
     public void logout(){loginCno = 0;}
 
     //2. 캐릭터 접속함수
-    public boolean joinGame(프로젝트2.Model.Dto.CharacterDto characterDTO){
+    public boolean joinGame(model.dto.CharacterDto characterDTO){
         int result = CharacterDAO.characterDAO.joinGame(characterDTO);
 
         if (result != 0){loginCno = result;return true;}
@@ -29,7 +29,7 @@ public class CharacterController {
 
     //4. 캐릭터 목록 함수
     public void showChar(){
-        return CharacterDAO.characterDAO.showChar();
+//        return CharacterDAO.characterDAO.showChar();
     }
     //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
 }

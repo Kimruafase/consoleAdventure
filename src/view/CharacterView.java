@@ -1,6 +1,6 @@
-package 프로젝트2.View;
+package view;
 
-import 프로젝트2.Controller.CharacterController;
+import controller.CharacterController;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,7 +33,7 @@ public class CharacterView { //cs
         System.out.println(">>>> 캐릭터 생성 페이지 <<<<");
         System.out.println("닉네임 입력 : "); String nickname = scan.next();
 
-        프로젝트2.Model.Dto.CharacterDto characterDTO = new 프로젝트2.Model.Dto.CharacterDto(nickname);
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname);
 
         boolean result = CharacterController.cController.createChar(characterDTO);
 
@@ -46,7 +46,7 @@ public class CharacterView { //cs
     public void joinGame(){
         System.out.println("캐릭터 닉네임 입력 : "); String nickname = scan.next();
 
-        프로젝트2.Model.Dto.CharacterDto characterDTO = new 프로젝트2.Model.Dto.CharacterDto(nickname);
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname);
 
         boolean reslut = CharacterController.cController.joinGame(characterDTO);
         System.out.println(reslut);
@@ -75,16 +75,16 @@ public class CharacterView { //cs
 
     //4. 캐릭터 목록 함수
     public void showChar(){
-        ArrayList<프로젝트2.Model.Dto.CharacterDto> result = CharacterController.cController.showChar();
+//        ArrayList<model.dto.CharacterDto> result = CharacterController.cController.showChar();
 
-        if (result.isEmpty()){
-            System.out.println("보유하신 캐릭터가 없습니다.");
-        }else {
-            System.out.println("캐릭터목록");
-            result.forEach(showcha -> {
-                System.out.printf("");
-            });
-        }
+//        if (result.isEmpty()){
+//            System.out.println("보유하신 캐릭터가 없습니다.");
+//        }else {
+//            System.out.println("캐릭터목록");
+//            result.forEach(showcha -> {
+//                System.out.printf("");
+//            });
+//        }
         //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
     }
 } //ce
