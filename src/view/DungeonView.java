@@ -5,6 +5,7 @@ import model.dto.CharacterDto;
 import model.dto.DungeonDto_Monster;
 import model.dto.SkillDto;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DungeonView {
@@ -25,6 +26,7 @@ public class DungeonView {
     int mDamage = 10;
     int mHp = 100;
     int cHpChange = 50;
+    int Mhp = 0;
     public void dungeonIndex(){
                 try {
                     int ch = (int)(Math.random() * 6 + 1);
@@ -149,23 +151,24 @@ public class DungeonView {
         DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
         SkillDto skillDto = new SkillDto();
 
-        dungeonDtoMonster.setMdamage(mDamage);
+        dungeonDtoMonster.setmHp(mHp);
         skillDto.setSkdamage(cDamage);
         characterDto.setChp(cHp);
-        dungeonDtoMonster.setMhp(mHp);
+
         while (true){
             System.out.println("공격하시려면 아무 키나 입력하세요. (INSERT)");
+            DungeonController.getInstance().myCharacterFight(characterDto,dungeonDtoMonster,skillDto,mDamage);
             scan.next();
-            DungeonController.getInstance().myCharacterFight(characterDto,dungeonDtoMonster,skillDto);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("나의 체력 : " + characterDto.getChp());
-            System.out.println("몬스터의 체력 : " + dungeonDtoMonster.getMhp());
+            System.out.println("몬스터의 체력 : " + dungeonDtoMonster.getmHp());
             System.out.println("\n-----------------------------------------\n");
+
             if(characterDto.getChp() <= 0){
                 cHp = characterDto.getChp();
                 gameOver();
                 return;
-            } else if (dungeonDtoMonster.getMhp() <= 0) {
+            } else if (dungeonDtoMonster.getmHp() <= 0) {
                 System.out.println("전투에서 승리하였습니다!\n");
                 cHp = characterDto.getChp();
                 dungeonState += 20;
@@ -177,7 +180,11 @@ public class DungeonView {
         }
     }
 
-    //  8.
+    //  8. 몬스터 정보 표시 함수
+    public void monsterPrint(){
+        int random = (int)(Math.random()*3+1);
+//        ArrayList<DungeonDto_Monster> list = DungeonController.getInstance().monsterPrint(random);
+    }
 
     // 진행 or 후퇴 함수
     public void goOrBack(){
@@ -207,5 +214,7 @@ public class DungeonView {
         } else{
             goOrBack();
         }
+
+
     }
 }
