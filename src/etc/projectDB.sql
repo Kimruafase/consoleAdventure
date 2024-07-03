@@ -65,6 +65,12 @@ primary key(dgkey),
 foreign key(mkey) references monster(mkey),
 foreign key(dtkey) references dungeonDetail(dtkey)
 );
+create table admin(
+akey int auto_increment,
+aid varchar(50) not null unique,
+apwd varchar(50) not null,
+primary key(akey)
+);
 
 select * from myaccount;
 select * from mycharacter;
@@ -73,8 +79,11 @@ select * from dungeonDetail;
 select * from skill;
 select * from Myskill;
 select * from dungeon;
+select * from admin;
 
 #테스트용
+insert into admin(aid,apwd) values ('admin','admin');
+
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬','010-9999-8888','010101');
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bk','1234','유재석','010-7777-8888','990808');
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bq','1234','강호동','010-6666-8888','891111');
@@ -83,9 +92,9 @@ insert into mycharacter(cnickname) values ('카카오');
 insert into mycharacter(cnickname) values ('네이버');
 insert into mycharacter(cnickname) values ('페이커');
 
-insert into monster(mname,mhp,mdamage) values ('스켈레톤',100,5);
-insert into monster(mname,mhp,mdamage) values ('스켈레톤1',100,5);
-insert into monster(mname,mhp,mdamage) values ('스켈레톤2',100,5);
+insert into monster(mname) values ('스켈레톤');
+insert into monster(mname) values ('좀비');
+insert into monster(mname) values ('슬라임');
 
 insert into dungeonDetail(dname) values ('초원');
 insert into dungeonDetail(dname) values ('동굴');
@@ -96,5 +105,9 @@ insert into skill(skname,skinfo,skdamage) values ('파이어볼','파이어볼 �
 insert into skill(skname,skinfo,skdamage) values ('활쏘기','화살을 쏩니다.',30);
 
 insert into Myskill(ckey, skkey) values (1,2);
+insert into Myskill(ckey, skkey) values (2,1);
+insert into Myskill(ckey, skkey) values (3,3);
 
+insert into dungeonDetail(ckey, mkey) values (1,1);
+insert into dungeonDetail(ckey, mkey) values (1,1);
 insert into dungeonDetail(ckey, mkey) values (1,1);
