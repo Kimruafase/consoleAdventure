@@ -1,22 +1,22 @@
-package 프로젝트2.Model.Dto;
+package model.dto;
 
-public class CharacterDTO {
+public class CharacterDto {
     //멤버변수
     private  int ckey;
     private String cnickname;
     private int chp;
     private int akey;
     //생성자
-    public CharacterDTO(){}
+    public CharacterDto(){}
 
-    public CharacterDTO(int ckey, String cnickname, int chp, int akey) {
+    public CharacterDto(int ckey, String cnickname, int chp, int akey) {
         this.ckey = ckey;
         this.cnickname = cnickname;
         this.chp = chp;
         this.akey = akey;
     }
 
-    public CharacterDTO (String cnickname){
+    public CharacterDto(String cnickname){
         this.cnickname = cnickname;
     }
 

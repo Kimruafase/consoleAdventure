@@ -1,11 +1,8 @@
 package 프로젝트2.View;
 
 import DAY16.controller.MemberController;
-import 프로젝트2.Controller.CharacterController;
 import 프로젝트2.Controller.MenuController;
-import 프로젝트2.Model.Dto.CharacterDTO;
 import 프로젝트2.Model.Dto.MySkillDto;
-import 프로젝트2.Model.Dto.SkillDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,7 +29,7 @@ public class MenuView {
 
     //1. 캐릭터 정보 함수
     public void charinfo(){
-        ArrayList<CharacterDTO> result = MenuController.MController.charinfo();
+        ArrayList<프로젝트2.Model.Dto.CharacterDto> result = MenuController.MController.charinfo();
 
         if (result.isEmpty()){
             System.out.println("없는 정보입니다.");

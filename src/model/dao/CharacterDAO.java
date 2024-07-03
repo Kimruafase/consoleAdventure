@@ -1,10 +1,8 @@
 package 프로젝트2.Model.Dao;
 
 import DAY16.model.dto.BoardDTO;
-import 프로젝트2.Model.Dto.CharacterDTO;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class CharacterDAO { //cs
 
@@ -23,7 +21,7 @@ public class CharacterDAO { //cs
     } //DE
 
     //1. 캐릭터생성함수
-    public boolean createChar(CharacterDTO characterDTO){ //ccs
+    public boolean createChar(프로젝트2.Model.Dto.CharacterDto characterDTO){ //ccs
         try {
             String sql = "insert into mycharacter(cnickname) values (?)";
             ps = conn.prepareStatement(sql);
@@ -34,7 +32,7 @@ public class CharacterDAO { //cs
     } //cce
 
     //2. 캐릭터 접속함수
-    public int joinGame(CharacterDTO characterDTO){
+    public int joinGame(프로젝트2.Model.Dto.CharacterDto characterDTO){
         try{
             String sql = "select * from mycharacter where cnickname = ?";
             ps = conn.prepareStatement(sql);

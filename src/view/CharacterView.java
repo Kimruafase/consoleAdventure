@@ -1,7 +1,6 @@
 package 프로젝트2.View;
 
 import 프로젝트2.Controller.CharacterController;
-import 프로젝트2.Model.Dto.CharacterDTO;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,7 +33,7 @@ public class CharacterView { //cs
         System.out.println(">>>> 캐릭터 생성 페이지 <<<<");
         System.out.println("닉네임 입력 : "); String nickname = scan.next();
 
-        CharacterDTO characterDTO = new CharacterDTO(nickname);
+        프로젝트2.Model.Dto.CharacterDto characterDTO = new 프로젝트2.Model.Dto.CharacterDto(nickname);
 
         boolean result = CharacterController.cController.createChar(characterDTO);
 
@@ -47,7 +46,7 @@ public class CharacterView { //cs
     public void joinGame(){
         System.out.println("캐릭터 닉네임 입력 : "); String nickname = scan.next();
 
-        CharacterDTO characterDTO = new CharacterDTO(nickname);
+        프로젝트2.Model.Dto.CharacterDto characterDTO = new 프로젝트2.Model.Dto.CharacterDto(nickname);
 
         boolean reslut = CharacterController.cController.joinGame(characterDTO);
         System.out.println(reslut);
@@ -76,7 +75,7 @@ public class CharacterView { //cs
 
     //4. 캐릭터 목록 함수
     public void showChar(){
-        ArrayList<CharacterDTO> result = CharacterController.cController.showChar();
+        ArrayList<프로젝트2.Model.Dto.CharacterDto> result = CharacterController.cController.showChar();
 
         if (result.isEmpty()){
             System.out.println("보유하신 캐릭터가 없습니다.");

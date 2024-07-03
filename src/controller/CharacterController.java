@@ -1,15 +1,12 @@
 package 프로젝트2.Controller;
 
 import 프로젝트2.Model.Dao.CharacterDAO;
-import 프로젝트2.Model.Dto.CharacterDTO;
-
-import java.util.ArrayList;
 
 public class CharacterController {
     public static CharacterController cController = new CharacterController();
 
     //1. 캐릭터생성함수
-    public boolean createChar(CharacterDTO characterDTO){
+    public boolean createChar(프로젝트2.Model.Dto.CharacterDto characterDTO){
         boolean result = CharacterDAO.characterDAO.createChar(characterDTO);
         return result;
     }
@@ -17,7 +14,7 @@ public class CharacterController {
     public void logout(){loginCno = 0;}
 
     //2. 캐릭터 접속함수
-    public boolean joinGame(CharacterDTO characterDTO){
+    public boolean joinGame(프로젝트2.Model.Dto.CharacterDto characterDTO){
         int result = CharacterDAO.characterDAO.joinGame(characterDTO);
 
         if (result != 0){loginCno = result;return true;}
