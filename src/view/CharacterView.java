@@ -75,7 +75,7 @@ public class CharacterView { //cs
 
     //4. 캐릭터 목록 함수
     public void showChar(){
-//        ArrayList<model.dto.CharacterDto> result = CharacterController.cController.showChar();
+//        ArrayList< model.dto.CharacterDto> result = CharacterController.cController.showChar();
 
 //        if (result.isEmpty()){
 //            System.out.println("보유하신 캐릭터가 없습니다.");
