@@ -17,10 +17,13 @@ public class MyAccountView {
     // 첫화면
     public void index(){
         while (true){
-            System.out.print("1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 : ");
+            System.out.print("0. 관리자모드 1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 : ");
             int ch = scan.nextInt();
             try{
-                if(ch==1){
+                if(ch==0){
+                    AdminView.getInstance().adminIndex();
+                }
+                else if(ch==1){
                     signup();
                 } else if (ch==2) {
                     login();
@@ -165,6 +168,7 @@ public class MyAccountView {
         System.out.printf("%3d"+"  "+"%s %s %s %s %s %s \n" , myAccountDto.getAkey() , myAccountDto.getAid() ,
                 myAccountDto.getApwd() , myAccountDto.getAname() , myAccountDto.getAnum() ,
                 myAccountDto.getAbirth() , myAccountDto.getAdate());
+
     }   // myInfo() end
 
     // 7. 회원수정
