@@ -1,42 +1,54 @@
-package model.dto;
+package 프로젝트2.Model.Dto;
 
-public class CharacterDto {
-    //이동객체 DTO생성
-    //1. 멤버변수
-    private int ckey;
-    private String nickname;
+public class CharacterDTO {
+    //멤버변수
+    private  int ckey;
+    private String cnickname;
     private int chp;
     private int akey;
+    //생성자
+    public CharacterDTO(){}
 
-    //2. 생성자
-
-    //기본생성자
-    public CharacterDto(){}
-    //전체 생성자
-
-    public CharacterDto(int ckey, String nickname, int chp, int akey) {
+    public CharacterDTO(int ckey, String cnickname, int chp, int akey) {
         this.ckey = ckey;
-        this.nickname = nickname;
+        this.cnickname = cnickname;
         this.chp = chp;
         this.akey = akey;
     }
 
-
-    //필요 생성자
-
-    public CharacterDto(String nickname) {
-        this.nickname = nickname;
+    public CharacterDTO (String cnickname){
+        this.cnickname = cnickname;
     }
 
-    //3. 메소드
+    //메소드
+    //toString
 
-    //3-1 getter & setter
-    public String getNickname() {
-        return nickname;
+    @Override
+    public String toString() {
+        return "CharacterDTO{" +
+                "ckey=" + ckey +
+                ", cnickname='" + cnickname + '\'' +
+                ", chp=" + chp +
+                ", akey=" + akey +
+                '}';
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    //getter setter
+
+    public int getCkey() {
+        return ckey;
+    }
+
+    public void setCkey(int ckey) {
+        this.ckey = ckey;
+    }
+
+    public String getCnickname() {
+        return cnickname;
+    }
+
+    public void setCnickname(String cnickname) {
+        this.cnickname = cnickname;
     }
 
     public int getChp() {
@@ -47,32 +59,11 @@ public class CharacterDto {
         this.chp = chp;
     }
 
-    public int getCkey() {
-        return ckey;
-    }
-
-    public void setCkey(int ckey) {
-        this.ckey = ckey;
-    }
-
     public int getAkey() {
         return akey;
     }
 
     public void setAkey(int akey) {
         this.akey = akey;
-    }
-
-    //3-2 toString
-
-
-    @Override
-    public String toString() {
-        return "CharacterDto{" +
-                "ckey=" + ckey +
-                ", nickname='" + nickname + '\'' +
-                ", chp=" + chp +
-                ", akey=" + akey +
-                '}';
     }
 }

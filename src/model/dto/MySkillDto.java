@@ -1,4 +1,4 @@
-package model.dto;
+package 프로젝트2.Model.Dto;
 
 public class MySkillDto {
     // 멤버변수
@@ -6,6 +6,33 @@ public class MySkillDto {
     private int ckey;
     private int skkey;
 
+    public String getSkname() {
+        return skname;
+    }
+
+    public void setSkname(String skname) {
+        this.skname = skname;
+    }
+
+    public String getSkinfo() {
+        return skinfo;
+    }
+
+    public void setSkinfo(String skinfo) {
+        this.skinfo = skinfo;
+    }
+
+    public int getSkdamage() {
+        return skdamage;
+    }
+
+    public void setSkdamage(int skdamage) {
+        this.skdamage = skdamage;
+    }
+
+    private String skname;
+    private String skinfo;
+    private int skdamage;
     //  생성자
     public MySkillDto(){}
 
@@ -14,6 +41,7 @@ public class MySkillDto {
         this.ckey = ckey;
         this.skkey = skkey;
     }
+
     //  메소드(getter and setter, toString())
 
     public int getMskey() {

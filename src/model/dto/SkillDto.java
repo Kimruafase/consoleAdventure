@@ -1,4 +1,4 @@
-package model.dto;
+package 프로젝트2.Model.Dto;
 
 public class SkillDto {
     //  멤버변수
