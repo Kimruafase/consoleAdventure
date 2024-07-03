@@ -1,7 +1,8 @@
-import view.DungeonView;
+import view.MyAccountView;
 
 public class AppStart {
     public static void main(String[] args) {
-        DungeonView.getInstance().dungeonIndex();
+        MyAccountView.getinstance().index();
+
     }
 }
