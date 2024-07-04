@@ -5,9 +5,21 @@ public class DungeonDto_Monster {
     private int mkey;
     private String mname;
     private int mHp;
+    private int mDamage;
 
     //  생성자
-    public DungeonDto_Monster(){}
+    public DungeonDto_Monster(){
+        this.mHp = 100;
+        this.mDamage = 10;
+    }
+
+    public int getmDamage() {
+        return mDamage;
+    }
+
+    public void setmDamage(int mDamage) {
+        this.mDamage = mDamage;
+    }
 
     public DungeonDto_Monster(int mkey, String mname) {
         this.mkey = mkey;

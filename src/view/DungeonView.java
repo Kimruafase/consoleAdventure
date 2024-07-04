@@ -17,20 +17,10 @@ public class DungeonView {
     public static DungeonView getInstance(){
         return dungeonView;
     }
-    //  던전의 진행 상황 변수
-    int dungeonState = 0;
-    int dungeonStateChange = 20;
-    //  캐릭터와 몬스터의 체력과 데미지 설정
-    int cDamage = 20;
-    int cHp = 100;
-    int mDamage = 10;
-    int mHp = 100;
-    int cHpChange = 50;
-    int Mhp = 0;
 
     public void dungeonIndex( ){
                 try {
-                    int ch = (int)(Math.random() * 6 + 1);
+                    int ch = DungeonController.getInstance().dice();
                     if (ch == 1) {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
@@ -39,27 +29,27 @@ public class DungeonView {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
                         System.out.println("회복의 크리스탈을 발견하였습니다! 체력을 회복합니다.\n");
-                        hpRecovery();
+                        DungeonController.getInstance().hpRecovery();
                     } else if (ch == 3) {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
                         System.out.println("강제 귀환! 던전의 처음으로 돌아갑니다!\n");
-                        backToTheBeginning();
+                        DungeonController.getInstance().backToTheBeginning();
                     } else if (ch == 4) {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
                         System.out.println("아무 일도 일어나지 않았습니다. 그대로 진행합니다.\n");
-                        goContinue();
+                        DungeonController.getInstance().goContinue();
                     } else if (ch == 5) {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
                         System.out.println("길이 막혀있습니다! 뒤로 돌아갑니다.\n");
-                        goBackOneSpace();
+                        DungeonController.getInstance().goBackOneSpace();
                     } else if (ch == 6) {
                         System.out.println(ch + "번이 나왔습니다!");
                         System.out.println("-----------------------------------------\n");
                         System.out.println("함정이 발동되었습니다! 체력이 감소합니다.\n");
-                        meetTrap();
+                        DungeonController.getInstance().meetTrap();
                     }
                 }catch (Exception e){
                     System.out.println(e);
@@ -72,69 +62,7 @@ public class DungeonView {
         fight();
     }
 
-    //  2. 체력 회복 함수
-    public void hpRecovery( ){
-        if(cHp < 100){
-            System.out.println("체력을 " + cHpChange + "만큼 회복합니다.");
-            cHp += cHpChange;
-            if(cHp > 100){
-                cHp = 100;
-            }
-        }else{
-            System.out.println("최대 체력이므로 더 이상 회복하지 못합니다.");
-            cHp = 100;
-        }
-        dungeonState += dungeonStateChange;
-        System.out.println("현재 체력은 " + cHp + "입니다.\n");
-        System.out.println("진행도가 " + dungeonStateChange + "%만큼 증가합니다.\n");
-        System.out.println("진행도 : " + dungeonState + "%");
-        gameOver();
-    }
 
-    //  3. 강제 귀환 함수
-    public void backToTheBeginning( ){
-
-
-        dungeonState = 0;
-        System.out.println("진행도가 " + dungeonState + "%로 초기화됩니다...\n");
-        System.out.println("진행도 : " + dungeonState + "%");
-        gameOver();
-    }
-
-    //  4. 그대로 진행 함수
-    public void goContinue( ){
-
-
-        dungeonState += dungeonStateChange;
-        System.out.println("진행도가 " + dungeonStateChange + "%만큼 증가합니다.\n");
-        System.out.println("진행도 : " + dungeonState + "%");
-        gameOver();
-    }
-
-    //  5. 뒤로 가기 함수
-    public void goBackOneSpace( ){
-
-        if(dungeonState > 0){
-            dungeonState -= dungeonStateChange;
-        }else {
-            dungeonState = 0;
-        }
-        System.out.println("진행도가 " + dungeonStateChange + "%만큼 감소합니다.\n");
-        System.out.println("진행도 : " + dungeonState + "%");
-        gameOver();
-    }
-
-    //  6. 함정 발동 함수
-    public void meetTrap(){
-        cHp -= cHpChange;
-        dungeonState += dungeonStateChange;
-        System.out.println("체력이 " + cHpChange + "만큼 감소합니다. ");
-        System.out.println("현재 체력은 " + cHp + "입니다.\n");
-        System.out.println("진행도가 " + dungeonStateChange + "%만큼 증가합니다.\n");
-        System.out.println("진행도 : " + dungeonState + "%");
-        gameOver();
-
-    }
 
     //  7. 전투 함수
     public void fight(){
@@ -157,25 +85,8 @@ public class DungeonView {
             MenuView.mView.skillinfo();
             String select = scan.next();
 
-            DungeonController.getInstance().myCharacterFight(characterDto,dungeonDtoMonster,skillDto,mDamage,select);
-            System.out.println("\n-----------------------------------------\n");
-            System.out.println("나의 체력 : " + characterDto.getChp());
-            System.out.println("몬스터의 체력 : " + dungeonDtoMonster.getmHp());
-            System.out.println("\n-----------------------------------------\n");
-
-            if (characterDto.getChp() <= 0) {
-                cHp = characterDto.getChp();
-                gameOver(multi);
-                return;
-            } else if (dungeonDtoMonster.getmHp() <= 0) {
-                System.out.println("전투에서 승리하였습니다!\n");
-                cHp = characterDto.getChp();
-                dungeonState += 20;
-                System.out.println("진행도가 " + dungeonStateChange + "%만큼 증가합니다.\n");
-                System.out.println("진행도 : " + dungeonState + "%");
-                gameOver(multi);
-                return;
-            }
+            DungeonController.getInstance().myCharacterFight(select);
+            DungeonController.getInstance().fightResult();
         }
     }
 
@@ -198,24 +109,7 @@ public class DungeonView {
         }
     }
 
-    // 게임 종료 함수
-    public void gameOver( ){
-        if(cHp <= 0){
-            System.out.println("\n-----------------------------------------\n");
-            System.out.println("[[캐릭터의 체력이 0 이하이므로 클리어하지 못했습니다.]]\n");
-            System.out.println("=============== GAME OVER =============== ");
-            MenuView.mView.index2();
-        } else if (dungeonState >= 100) {
-            System.out.println("\n-----------------------------------------\n");
-            System.out.println("[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
-            System.out.println("=============== GAME CLEAR ============== ");
-            MenuView.mView.index2();
-        } else{
-            goOrBack();
-        }
 
-
-    }
 
 
 }

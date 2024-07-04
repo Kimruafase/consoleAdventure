@@ -21,9 +21,10 @@ public class CharacterDAO { //cs
     //1. 캐릭터생성함수
     public boolean createChar(model.dto.CharacterDto characterDTO){ //ccs
         try {
-            String sql = "insert into mycharacter(cnickname,) values (?,?)";
+            String sql = "insert into mycharacter(cnickname,akey) values (?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, characterDTO.getCnickname());
+            ps.setInt(2, characterDTO.getAkey());
             int count = ps.executeUpdate();
             if (count == 1){return true;}
         } catch (Exception e) {System.out.println(e);} return false;

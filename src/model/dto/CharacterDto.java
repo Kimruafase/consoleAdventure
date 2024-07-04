@@ -4,12 +4,14 @@ public class CharacterDto {
     //멤버변수
     private  int ckey;
     private String cnickname;
-    private int chp = 100;
+    private int chp;
     private int akey;
     SkillDto SkillDto;
+    private int cHpChange;
     //생성자
     public CharacterDto(){
-
+        this.chp = 100;
+        this.cHpChange = 50;
     }
 
     public CharacterDto(int ckey, String cnickname, int chp, int akey) {
@@ -28,15 +30,34 @@ public class CharacterDto {
 
     @Override
     public String toString() {
-        return "CharacterDTO{" +
+        return "CharacterDto{" +
                 "ckey=" + ckey +
                 ", cnickname='" + cnickname + '\'' +
                 ", chp=" + chp +
                 ", akey=" + akey +
+                ", SkillDto=" + SkillDto +
+                ", cHpChange=" + cHpChange +
                 '}';
     }
 
+
     //getter setter
+
+    public int getcHpChange() {
+        return cHpChange;
+    }
+
+    public void setcHpChange(int cHpChange) {
+        this.cHpChange = cHpChange;
+    }
+
+    public model.dto.SkillDto getSkillDto() {
+        return SkillDto;
+    }
+
+    public void setSkillDto(model.dto.SkillDto skillDto) {
+        SkillDto = skillDto;
+    }
 
     public int getCkey() {
         return ckey;
