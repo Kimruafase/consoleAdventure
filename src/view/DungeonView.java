@@ -205,12 +205,12 @@ public class DungeonView {
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[캐릭터의 체력이 0 이하이므로 클리어하지 못했습니다.]]\n");
             System.out.println("=============== GAME OVER =============== ");
-            return;
+            MenuView.mView.index2();
         } else if (dungeonState >= 100) {
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             System.out.println("=============== GAME CLEAR ============== ");
-            return;
+            MenuView.mView.index2();
         } else{
             goOrBack();
         }
