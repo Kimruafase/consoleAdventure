@@ -27,7 +27,8 @@ public class DungeonView {
     int mHp = 100;
     int cHpChange = 50;
     int Mhp = 0;
-    public void dungeonIndex(){
+
+    public void dungeonIndex( ){
                 try {
                     int ch = (int)(Math.random() * 6 + 1);
                     if (ch == 1) {
@@ -67,15 +68,18 @@ public class DungeonView {
 
 
     //  1. 몬스터 조우 함수
-    public void meetMonster(){
+    public void meetMonster( ){
         fight();
     }
 
     //  2. 체력 회복 함수
-    public void hpRecovery(){
+    public void hpRecovery( ){
         if(cHp < 100){
             System.out.println("체력을 " + cHpChange + "만큼 회복합니다.");
             cHp += cHpChange;
+            if(cHp > 100){
+                cHp = 100;
+            }
         }else{
             System.out.println("최대 체력이므로 더 이상 회복하지 못합니다.");
             cHp = 100;
@@ -88,7 +92,7 @@ public class DungeonView {
     }
 
     //  3. 강제 귀환 함수
-    public void backToTheBeginning(){
+    public void backToTheBeginning( ){
 
 
         dungeonState = 0;
@@ -98,7 +102,7 @@ public class DungeonView {
     }
 
     //  4. 그대로 진행 함수
-    public void goContinue(){
+    public void goContinue( ){
 
 
         dungeonState += dungeonStateChange;
@@ -108,7 +112,7 @@ public class DungeonView {
     }
 
     //  5. 뒤로 가기 함수
-    public void goBackOneSpace(){
+    public void goBackOneSpace( ){
 
         if(dungeonState > 0){
             dungeonState -= dungeonStateChange;
@@ -147,16 +151,9 @@ public class DungeonView {
 
     public void myCharacterFight(){
 
-        CharacterDto characterDto = new CharacterDto();
-        DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
-        SkillDto skillDto = new SkillDto();
-
-        dungeonDtoMonster.setmHp(mHp);
-        skillDto.setSkdamage(cDamage);
-        characterDto.setChp(cHp);
 
         while (true){
-            System.out.println("스킬을 사용하려면 스킬 이름을 입력하세요. \n기본 공격을 하고 싶다면 아무 키나 누르세요");
+            System.out.println("스킬을 사용하려면 스킬 이름을 입력하세요. \n기본 공격을 하고 싶다면 기본공격을 입력하세요.");
             MenuView.mView.skillinfo();
             String select = scan.next();
 
@@ -166,9 +163,9 @@ public class DungeonView {
             System.out.println("몬스터의 체력 : " + dungeonDtoMonster.getmHp());
             System.out.println("\n-----------------------------------------\n");
 
-            if(characterDto.getChp() <= 0){
+            if (characterDto.getChp() <= 0) {
                 cHp = characterDto.getChp();
-                gameOver();
+                gameOver(multi);
                 return;
             } else if (dungeonDtoMonster.getmHp() <= 0) {
                 System.out.println("전투에서 승리하였습니다!\n");
@@ -176,7 +173,7 @@ public class DungeonView {
                 dungeonState += 20;
                 System.out.println("진행도가 " + dungeonStateChange + "%만큼 증가합니다.\n");
                 System.out.println("진행도 : " + dungeonState + "%");
-                gameOver();
+                gameOver(multi);
                 return;
             }
         }
@@ -189,7 +186,7 @@ public class DungeonView {
     }
 
     // 진행 or 후퇴 함수
-    public void goOrBack(){
+    public void goOrBack( ){
         System.out.println("\n-----------------------------------------\n");
         System.out.println(" == 계속 진행하시겠습니까? ==");
         System.out.println(" == 1번 : 진행하기 / 그 외 : 후퇴하기 ==");
@@ -202,7 +199,7 @@ public class DungeonView {
     }
 
     // 게임 종료 함수
-    public void gameOver(){
+    public void gameOver( ){
         if(cHp <= 0){
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[캐릭터의 체력이 0 이하이므로 클리어하지 못했습니다.]]\n");

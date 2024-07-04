@@ -4,10 +4,13 @@ public class CharacterDto {
     //멤버변수
     private  int ckey;
     private String cnickname;
-    private int chp;
+    private int chp = 100;
     private int akey;
+    SkillDto SkillDto;
     //생성자
-    public CharacterDto(){}
+    public CharacterDto(){
+
+    }
 
     public CharacterDto(int ckey, String cnickname, int chp, int akey) {
         this.ckey = ckey;
