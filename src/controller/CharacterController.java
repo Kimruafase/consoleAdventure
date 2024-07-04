@@ -20,7 +20,6 @@ public class CharacterController {
         int result = CharacterDAO.characterDAO.joinGame(characterDTO);
 
 
-
         if (result != 0){loginCno = result;return true;}
         else {loginCno = 0;} return false;
     }
@@ -32,5 +31,6 @@ public class CharacterController {
         boolean result = CharacterDAO.characterDAO.delChar(characterDTO);
         return result;
     }
+
 
 }

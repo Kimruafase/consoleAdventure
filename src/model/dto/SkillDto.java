@@ -8,7 +8,9 @@ public class SkillDto {
     private int skdamage;
 
     //  생성자
-    public SkillDto(){}
+    public SkillDto(){
+        this.skdamage = 20;
+    }
 
     public SkillDto(int skkey, String skname, String skinfo, int skdamage) {
         this.skkey = skkey;

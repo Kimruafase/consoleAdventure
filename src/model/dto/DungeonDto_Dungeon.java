@@ -4,13 +4,43 @@ public class DungeonDto_Dungeon {
     int dkey;
     String dname;
     int ikey;
+    int dungeonState;
+    int dungeonStateChange;
+    int dungeonDiff;
 
-    public DungeonDto_Dungeon(){}
+    public DungeonDto_Dungeon(){
+        this.dungeonState = 0;
+        this.dungeonStateChange = 20;
+    }
 
     public DungeonDto_Dungeon(int dkey, String dname, int ikey) {
         this.dkey = dkey;
         this.dname = dname;
         this.ikey = ikey;
+    }
+
+    public int getDungeonState() {
+        return dungeonState;
+    }
+
+    public void setDungeonState(int dungeonState) {
+        this.dungeonState = dungeonState;
+    }
+
+    public int getDungeonStateChange() {
+        return dungeonStateChange;
+    }
+
+    public void setDungeonStateChange(int dungeonStateChange) {
+        this.dungeonStateChange = dungeonStateChange;
+    }
+
+    public int getDungeonDiff() {
+        return dungeonDiff;
+    }
+
+    public void setDungeonDiff(int dungeonDiff) {
+        this.dungeonDiff = dungeonDiff;
     }
 
     public int getDkey() {
@@ -43,6 +73,9 @@ public class DungeonDto_Dungeon {
                 "dkey=" + dkey +
                 ", dname='" + dname + '\'' +
                 ", ikey=" + ikey +
+                ", dungeonState=" + dungeonState +
+                ", dungeonStateChange=" + dungeonStateChange +
+                ", dungeonDiff=" + dungeonDiff +
                 '}';
     }
 }
