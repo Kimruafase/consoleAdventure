@@ -1,12 +1,14 @@
 package controller;
 
 import model.dao.CharacterDAO;
+import model.dto.CharacterDto;
 
 public class CharacterController {
     public static CharacterController cController = new CharacterController();
 
     //1. 캐릭터생성함수
     public boolean createChar(model.dto.CharacterDto characterDTO){
+        characterDTO.setAkey(MyAccountController.getInstance().loginAkey);
         boolean result = CharacterDAO.characterDAO.createChar(characterDTO);
         return result;
     }

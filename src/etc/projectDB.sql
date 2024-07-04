@@ -12,7 +12,6 @@ drop table if exists dungeonDetail;
 drop table if exists skill;
 drop table if exists Myskill;
 drop table if exists dungeon;
-drop table if exists admin;
 
 create table myaccount(
 akey int auto_increment,
@@ -67,10 +66,10 @@ foreign key(mkey) references monster(mkey),
 foreign key(dtkey) references dungeonDetail(dtkey)
 );
 create table admin(
-adkey int auto_increment,
-adid varchar(50) not null unique,
-adpwd varchar(50) not null,
-primary key(adkey)
+akey int auto_increment,
+aid varchar(50) not null unique,
+apwd varchar(50) not null,
+primary key(akey)
 );
 
 select * from myaccount;
@@ -83,11 +82,11 @@ select * from dungeon;
 select * from admin;
 
 #테스트용
-insert into admin(adid,adpwd) values ('admin','admin');
+insert into admin(aid,apwd) values ('admin','admin');
 
-insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬','01099998888','010101');
-insert into myaccount(aid,apwd,aname,anum,abirth) values ('bk','1234','유재석','01077778888','990808');
-insert into myaccount(aid,apwd,aname,anum,abirth) values ('bq','1234','강호동','01066668888','891111');
+insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬','010-9999-8888','010101');
+insert into myaccount(aid,apwd,aname,anum,abirth) values ('bk','1234','유재석','010-7777-8888','990808');
+insert into myaccount(aid,apwd,aname,anum,abirth) values ('bq','1234','강호동','010-6666-8888','891111');
 
 insert into mycharacter(cnickname) values ('카카오');
 insert into mycharacter(cnickname) values ('네이버');
@@ -97,7 +96,7 @@ insert into monster(mname) values ('스켈레톤');
 insert into monster(mname) values ('좀비');
 insert into monster(mname) values ('슬라임');
 
-insert into dungeonDetail(dname) values ('초원');
+insert into dungeon(dname) values ('초원');
 insert into dungeonDetail(dname) values ('동굴');
 insert into dungeonDetail(dname) values ('용암');
 
@@ -109,6 +108,6 @@ insert into Myskill(ckey, skkey) values (1,2);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
-insert into dungeon(mkey, dtkey) values (1,1);
-insert into dungeon(mkey, dtkey) values (2,2);
-insert into dungeon(mkey, dtkey) values (3,3);
+insert into dungeon(dtkey, mkey) values (1,1);
+insert into dungeon(dtkey, mkey) values (1,1);
+insert into dungeon(dtkey, mkey) values (1,1);
