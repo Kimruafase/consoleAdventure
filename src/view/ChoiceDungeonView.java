@@ -23,9 +23,15 @@ public class ChoiceDungeonView {
     } //ie
 
     //1. 쉬움난이도이동
-    public void easy(){}
+    public void easy(){
+        DungeonView.getInstance().dungeonIndex();
+    }
     //2. 보통난이도이동
-    public void normal(){}
+    public void normal(){
+        DungeonView.getInstance().dungeonIndex();
+    }
     //3. 어려움난이도이동
-    public void hard(){}
+    public void hard(){
+        DungeonView.getInstance().dungeonIndex();
+    }
 }
