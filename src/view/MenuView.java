@@ -44,7 +44,7 @@ public class MenuView {
     public void godungeon(){
         System.out.println("던전으로 이동합니다");
         System.out.println("==========================");
-//        ChoiceDungeonView.CDView.index3();
+        ChoiceDungeonView.choiceDungeonView.index3();
     }
     //3. 스킬정보 함수
     public void skillinfo(){

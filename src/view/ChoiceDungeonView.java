@@ -1,10 +1,10 @@
-package 프로젝트2.View;
+package view;
 
 import java.util.Scanner;
 
 public class ChoiceDungeonView {
 
-    public static ChoiceDungeonView CDView = new ChoiceDungeonView();
+    public static ChoiceDungeonView choiceDungeonView = new ChoiceDungeonView();
 
     public Scanner scan = new Scanner(System.in);
 

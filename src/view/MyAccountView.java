@@ -58,7 +58,7 @@ public class MyAccountView {
                     logout();   return;
                 }
             } else if (ch==5) {
-
+                CharacterView.chview.index();
             } else{
                 System.out.println(">> 없는 기능번호입니다.");
             }   // if end
