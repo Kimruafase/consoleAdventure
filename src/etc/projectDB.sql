@@ -66,10 +66,10 @@ foreign key(mkey) references monster(mkey),
 foreign key(dtkey) references dungeonDetail(dtkey)
 );
 create table admin(
-akey int auto_increment,
-aid varchar(50) not null unique,
-apwd varchar(50) not null,
-primary key(akey)
+adkey int auto_increment,
+adid varchar(50) not null unique,
+adpwd varchar(50) not null,
+primary key(adkey)
 );
 
 select * from myaccount;
