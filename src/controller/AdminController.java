@@ -15,17 +15,27 @@ public class AdminController {
         return adminController;
     }
     // 관리자 로그인 상태
-    public boolean adminLoginState = false;
+    public int adminLoginKey = 0;
     // 관리자 로그인
     public boolean adminLogin(String adminID , String adminPw){
         boolean result =  AdminDao.getInstance().adminLogin(adminID , adminPw);
         if(result){
-            adminLoginState = true;
+            adminLoginKey = 1;
             return true;
         }else {
+            adminLoginKey = 0;
             return false;
         }
     }   // adminLogin() end
+    // 로그아웃
+    public void adminLogout(){
+        adminLoginKey = 0;
+    }   // adminLogout() end
+
+    // 로그인상태함수
+    public boolean adminLoginState(){
+        return adminLoginKey == 0 ? false : true;
+    }
 
     // 회원전체 출력
     public ArrayList<MyAccountDto> accountPrintAll(){
@@ -36,5 +46,15 @@ public class AdminController {
     public ArrayList<MyAccountDto> accountSearch(String keyword){
         return AdminDao.getInstance().accountSearch(keyword);
     }   // accountSearch() end
+
+    // 회원수정
+    public boolean adminAccountUpdate(int akey , String anum){
+        return AdminDao.getInstance().adminAccountUpdate(akey , anum);
+    }   // adminAccountUpdate() end
+
+    // 회원삭제
+    public boolean adminAccountDelete(int akey){
+        return AdminDao.getInstance().adminAccountDelete(akey);
+    }   // adminAccountDelete() end
 
 }   // class end
