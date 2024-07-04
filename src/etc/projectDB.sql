@@ -96,7 +96,7 @@ insert into monster(mname) values ('스켈레톤');
 insert into monster(mname) values ('좀비');
 insert into monster(mname) values ('슬라임');
 
-insert into dungeonDetail(dname) values ('초원');
+insert into dungeon(dname) values ('초원');
 insert into dungeonDetail(dname) values ('동굴');
 insert into dungeonDetail(dname) values ('용암');
 
@@ -108,6 +108,6 @@ insert into Myskill(ckey, skkey) values (1,2);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
-insert into dungeonDetail(ckey, mkey) values (1,1);
-insert into dungeonDetail(ckey, mkey) values (1,1);
-insert into dungeonDetail(ckey, mkey) values (1,1);
+insert into dungeon(dtkey, mkey) values (1,1);
+insert into dungeon(dtkey, mkey) values (1,1);
+insert into dungeon(dtkey, mkey) values (1,1);
