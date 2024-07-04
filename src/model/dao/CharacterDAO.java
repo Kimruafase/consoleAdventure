@@ -42,18 +42,16 @@ public class CharacterDAO { //cs
     }
 
     //3. 캐릭터삭제함수
-    public boolean delChar(int bno){
+    public boolean delChar(model.dto.CharacterDto characterDTO){
         //로그인 정보번호 받아와서 저장
         try{
-            String sql = "delete from mycharacter where ckey = ?";
+            String sql = "delete from mycharacter where akey = ? and cnickname = ?";
             ps = conn.prepareStatement(sql);
-            ps.setInt(1,bno);
+            ps.setInt(1,characterDTO.getAkey());
+            ps.setString(2,characterDTO.getCnickname());
             int count = ps.executeUpdate();
             if (count == 1)return true;
         }catch (Exception e){System.out.println(e);} return false;
     }
 
-    //4. 캐릭터 목록 함수
-    public void showChar(){}
-    //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
 } //ce

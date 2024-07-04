@@ -1,6 +1,7 @@
 package view;
 
 import controller.CharacterController;
+import model.dto.CharacterDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,14 +16,13 @@ public class CharacterView { //cs
     //초기화면 함수 생성
     public void index(){ //is
         while(true){ //ws
-            System.out.println("1. 캐릭터 생성 2. 캐릭터 접속 3. 캐릭터 삭제 4.캐릭터 목록 5. 나가기 ");
+            System.out.println("1. 캐릭터 생성 2. 캐릭터 접속 3. 캐릭터 삭제 4.나가기 ");
             try{
                 int ch = scan.nextInt();
                 if (ch == 1){createChar();}
                 else if(ch == 2){joinGame();}
-                else if(ch == 3){delChar(ch);}
-                else if(ch == 4){showChar();}
-                else if(ch == 5){break;}
+                else if(ch == 3){delChar();}
+                else if(ch == 4){break;}
                 else {System.out.println("사용할 수 없는 기능 입니다.");}
             }catch (Exception e){System.out.println(e);}
         } //we
@@ -67,24 +67,14 @@ public class CharacterView { //cs
     }
 
     //3. 캐릭터 삭제함수
-    public void delChar(int bno){
-        boolean result = CharacterController.cController.delChar(bno);
+    public void delChar(){
+        System.out.println("삭제할 캐릭터 입력 : "); String delch = scan.next();
+
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(delch);
+
+        boolean result = CharacterController.cController.delChar(characterDTO);
         if (result){System.out.println("삭제 성공");}
         else {System.out.println("삭제 실패");}
     }
 
-    //4. 캐릭터 목록 함수
-    public void showChar(){
-//        ArrayList< model.dto.CharacterDto> result = CharacterController.cController.showChar();
-
-//        if (result.isEmpty()){
-//            System.out.println("보유하신 캐릭터가 없습니다.");
-//        }else {
-//            System.out.println("캐릭터목록");
-//            result.forEach(showcha -> {
-//                System.out.printf("");
-//            });
-//        }
-        //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
-    }
 } //ce

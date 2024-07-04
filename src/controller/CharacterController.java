@@ -22,14 +22,11 @@ public class CharacterController {
     }
 
     //3. 캐릭터삭제함수
-    public boolean delChar(int bno){
+    public boolean delChar(model.dto.CharacterDto characterDTO){
         //로그인 정보번호 받아와서 저장
-        return CharacterDAO.characterDAO.delChar(bno);
+        characterDTO.setAkey(MyAccountController.getInstance().loginAkey);
+        boolean result = CharacterDAO.characterDAO.delChar(characterDTO);
+        return result;
     }
 
-    //4. 캐릭터 목록 함수
-    public void showChar(){
-//        return CharacterDAO.characterDAO.showChar();
-    }
-    //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
 }
