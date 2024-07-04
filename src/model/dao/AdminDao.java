@@ -93,4 +93,37 @@ public class AdminDao {
         return list;
     }   // accountSearch() end
 
+    // 회원수정
+    public boolean adminAccountUpdate(int akey , String anum){
+        try{
+            String sql = "update myaccount set anum = ? where akey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,anum);
+            ps.setInt(2,akey);
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // adminAccountUpdate() end
+
+    // 회원삭제
+    public boolean adminAccountDelete(int akey){
+        try{
+            String sql = "delete from myaccount where akey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,akey);
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // adminAccountDelete() end
+
 }   // class end
