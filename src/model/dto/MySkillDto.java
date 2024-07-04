@@ -5,6 +5,9 @@ public class MySkillDto {
     private int mskey;
     private int ckey;
     private int skkey;
+    private String skname;
+    private String skinfo;
+    private int skdamage;
 
     public String getSkname() {
         return skname;
@@ -30,9 +33,6 @@ public class MySkillDto {
         this.skdamage = skdamage;
     }
 
-    private String skname;
-    private String skinfo;
-    private int skdamage;
     //  생성자
     public MySkillDto(){}
 

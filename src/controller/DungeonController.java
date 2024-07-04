@@ -1,7 +1,9 @@
 package controller;
 
+import model.dao.DungeonDao;
 import model.dto.CharacterDto;
 import model.dto.DungeonDto_Monster;
+import model.dto.MySkillDto;
 import model.dto.SkillDto;
 
 import java.util.ArrayList;
@@ -14,12 +16,25 @@ public class DungeonController {
         return dungeonController;
     }
     // 1. 전투 메소드
-    public void myCharacterFight(CharacterDto characterDto, DungeonDto_Monster dungeonDtoMonster, SkillDto skillDto,int mDamage){
+    public void myCharacterFight(CharacterDto characterDto, DungeonDto_Monster dungeonDtoMonster, SkillDto skillDto,int mDamage, String select){
         int Chp = characterDto.getChp();
         int Mhp = dungeonDtoMonster.getmHp();
-        int Cdamage = skillDto.getSkdamage();
-        Mhp -= Cdamage;
+        MySkillDto mySkillDto = DungeonDao.getInstance().useSkill(CharacterController.cController.loginCno, select);
+        System.out.println(mySkillDto.getSkdamage());
+        System.out.println(mySkillDto.getSkname());
+        if(mySkillDto.getSkname() == null){
+            int Cdamage = skillDto.getSkdamage();
+            System.out.println(Cdamage);
+            Mhp -= Cdamage;
+            System.out.println(Mhp);
+        } else {
+            int Cdamage = skillDto.getSkdamage() + mySkillDto.getSkdamage();
+            System.out.println(Cdamage);
+            Mhp -= Cdamage;
+            System.out.println(Mhp);
+        }
         Chp -= mDamage;
+        System.out.println(Chp);
         characterDto.setChp(Chp);
         dungeonDtoMonster.setmHp(Mhp);
     }

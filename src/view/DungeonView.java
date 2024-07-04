@@ -156,9 +156,11 @@ public class DungeonView {
         characterDto.setChp(cHp);
 
         while (true){
-            System.out.println("공격하시려면 아무 키나 입력하세요. (INSERT)");
-            DungeonController.getInstance().myCharacterFight(characterDto,dungeonDtoMonster,skillDto,mDamage);
-            scan.next();
+            System.out.println("스킬을 사용하려면 스킬 이름을 입력하세요. \n기본 공격을 하고 싶다면 아무 키나 누르세요");
+            MenuView.mView.skillinfo();
+            String select = scan.next();
+
+            DungeonController.getInstance().myCharacterFight(characterDto,dungeonDtoMonster,skillDto,mDamage,select);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("나의 체력 : " + characterDto.getChp());
             System.out.println("몬스터의 체력 : " + dungeonDtoMonster.getmHp());
@@ -217,4 +219,6 @@ public class DungeonView {
 
 
     }
+
+
 }
