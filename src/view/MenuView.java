@@ -56,7 +56,7 @@ public class MenuView {
             System.out.println("스킬 이름 \t 스킬 설명 \t\t 스킬 데미지");
             System.out.println("================================================");
             result.forEach(skillinfo -> {
-                System.out.printf("%s    \t%s\t%d \n", skillinfo.getSkname(), skillinfo.getSkinfo(), skillinfo.getSkdamage());
+                System.out.printf("%-10s %10s%10d \n", skillinfo.getSkname(), skillinfo.getSkinfo(), skillinfo.getSkdamage());
                 System.out.println("==================================================");
             });
         }

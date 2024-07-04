@@ -21,7 +21,7 @@ public class CharacterDAO { //cs
     //1. 캐릭터생성함수
     public boolean createChar(model.dto.CharacterDto characterDTO){ //ccs
         try {
-            String sql = "insert into mycharacter(cnickname) values (?)";
+            String sql = "insert into mycharacter(cnickname,) values (?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, characterDTO.getCnickname());
             int count = ps.executeUpdate();

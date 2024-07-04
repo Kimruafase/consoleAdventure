@@ -17,6 +17,8 @@ public class CharacterController {
     public boolean joinGame(model.dto.CharacterDto characterDTO){
         int result = CharacterDAO.characterDAO.joinGame(characterDTO);
 
+
+
         if (result != 0){loginCno = result;return true;}
         else {loginCno = 0;} return false;
     }
