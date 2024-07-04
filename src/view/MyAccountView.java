@@ -103,10 +103,10 @@ public class MyAccountView {
         boolean result = MyAccountController.getInstance().login(myAccountDto);
         if(result) {
             System.out.println(">> 로그인 성공");
+            index2();
         }else {
             System.out.println(">> 로그인 실패");
         }
-        index2();
     }   // login() end
 
     // 3. 아이디찾기

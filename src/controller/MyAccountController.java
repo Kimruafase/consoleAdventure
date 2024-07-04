@@ -29,6 +29,11 @@ public class MyAccountController {
         return result == 0 ? false : true;
     }   // login() end
 
+    // * 로그인상태 체크
+    public boolean loginState(){
+        return loginAkey == 0 ? false : true;
+    }
+
     // 3. 아이디찾기
     public String  findID(MyAccountDto myAccountDto){
         return MyAccountDao.getInstance().findID(myAccountDto);
