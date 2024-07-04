@@ -22,7 +22,7 @@ public class MenuView {
             if(ch == 1){charinfo();}
             else if(ch == 2){godungeon();}
             else if(ch == 3){skillinfo();}
-            else if(ch == 4){break;}
+            else if(ch == 4){CharacterView.chview.index();}
             else {System.out.println("없는 기능 입니다.");}
         } //we
     } //ie

@@ -25,11 +25,13 @@ public class DungeonController {
     //  게임 종료를 판단하는 함수
     public void gameOver( ) {
         if (characterDto.getChp() <= 0) {
+            characterDto.setChp(100);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[캐릭터의 체력이 0 이하이므로 클리어하지 못했습니다.]]\n");
             System.out.println("=============== GAME OVER =============== ");
             MenuView.mView.index2();
         } else if (dungeonDtoDungeon.getDungeonState() >= 100) {
+            characterDto.setChp(100);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             System.out.println("=============== GAME CLEAR ============== ");
@@ -60,10 +62,12 @@ public class DungeonController {
 
         if (characterDto.getChp() <= 0) {
             characterDto.setChp(characterDto.getChp());
+            dungeonDtoMonster.setmHp(100);
             gameOver();
         } else if (dungeonDtoMonster.getmHp() <= 0) {
             System.out.println("전투에서 승리하였습니다!\n");
             characterDto.setChp(characterDto.getChp());
+            dungeonDtoMonster.setmHp(100);
             dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+dungeonDtoDungeon.getDungeonStateChange());
             System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 증가합니다.\n");
             System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");

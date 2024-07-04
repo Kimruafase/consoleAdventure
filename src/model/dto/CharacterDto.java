@@ -1,5 +1,7 @@
 package model.dto;
 
+import controller.CharacterController;
+
 public class CharacterDto {
     //멤버변수
     private  int ckey;
@@ -12,6 +14,7 @@ public class CharacterDto {
     public CharacterDto(){
         this.chp = 100;
         this.cHpChange = 50;
+        this.ckey = CharacterController.cController.loginCno;
     }
 
     public CharacterDto(int ckey, String cnickname, int chp, int akey) {

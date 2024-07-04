@@ -22,7 +22,7 @@ public class CharacterView { //cs
                 if (ch == 1){createChar();}
                 else if(ch == 2){joinGame();}
                 else if(ch == 3){delChar();}
-                else if(ch == 4){break;}
+                else if(ch == 4){MyAccountView.getInstance().index2();}
                 else {System.out.println("사용할 수 없는 기능 입니다.");}
             }catch (Exception e){System.out.println(e);}
         } //we
