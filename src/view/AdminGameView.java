@@ -1,12 +1,14 @@
 package view;
 
+import controller.AdminGameController;
+import model.dto.CharacterDto;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminGameView {
     private static AdminGameView adminGameView = new AdminGameView();
-    // 2. 해당 클래스의 생성자에 private 한다. 다른 클래스에서 new 사용하지 못하게
     private AdminGameView(){}
-    // 3. 해당 객체(싱글톤)를 외부로부터 접근할 수 있도록 간접 호출 메소드
     public static AdminGameView getInstance(){
         return adminGameView;
     }
@@ -49,7 +51,14 @@ public class AdminGameView {
     }
     // 1-1 캐릭터 전채 출력
     public void characterAllPrint(){
-        System.out.println("test");
-    }
+       ArrayList<CharacterDto> list = AdminGameController.getInstance().characterAllPrint();
+        System.out.println("// ============================== 전체 캐릭터 ============================== //");
+        System.out.println("캐릭터번호  닉네임  회원아이디 ");
+        list.forEach(dto -> {
+            System.out.printf("%3d %8s %10s %7s %13s %7s %s\n" , dto.getCkey() , dto.getCnickname() ,
+                    dto.getAid());
+        });
+
+    }   // characterAllPrint() end
 
 }   // AdminGameView class end
