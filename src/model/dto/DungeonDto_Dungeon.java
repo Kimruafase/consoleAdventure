@@ -1,12 +1,12 @@
 package model.dto;
 
 public class DungeonDto_Dungeon {
-    int dkey;
-    String dname;
-    int ikey;
-    int dungeonState;
-    int dungeonStateChange;
-    int dungeonDiff;
+    private int dkey;
+    private String dname;
+    private int ikey;
+    private int dungeonState;
+    private int dungeonStateChange;
+    private int dungeonDiff;
 
     public DungeonDto_Dungeon(){
         this.dungeonState = 0;

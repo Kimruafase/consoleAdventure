@@ -19,7 +19,10 @@ public class DungeonView {
     }
 
     public void dungeonIndex( ){
-                try {
+                try {System.out.println("\n-----------------------------------------\n");
+                    System.out.println("주사위를 굴리려면 아무키나 눌러주세요!");
+                    System.out.println("\n-----------------------------------------\n");
+                    scan.next();
                     int ch = DungeonController.getInstance().dice();
                     if (ch == 1) {
                         System.out.println(ch + "번이 나왔습니다!");
