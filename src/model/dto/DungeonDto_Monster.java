@@ -13,17 +13,19 @@ public class DungeonDto_Monster {
         this.mDamage = 10;
     }
 
+    public DungeonDto_Monster(int mkey, String mname, int mHp, int mDamage) {
+        this.mkey = mkey;
+        this.mname = mname;
+        this.mHp = mHp;
+        this.mDamage = mDamage;
+    }
+
     public int getmDamage() {
         return mDamage;
     }
 
     public void setmDamage(int mDamage) {
         this.mDamage = mDamage;
-    }
-
-    public DungeonDto_Monster(int mkey, String mname) {
-        this.mkey = mkey;
-        this.mname = mname;
     }
 
     public int getmHp() {
@@ -55,6 +57,8 @@ public class DungeonDto_Monster {
         return "DungeonDto_Monster{" +
                 "mkey=" + mkey +
                 ", mname='" + mname + '\'' +
+                ", mHp=" + mHp +
+                ", mDamage=" + mDamage +
                 '}';
     }
 }
