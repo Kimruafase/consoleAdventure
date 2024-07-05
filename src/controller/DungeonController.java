@@ -131,6 +131,16 @@ public class DungeonController {
         System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
         gameOver();
     }
+
+    //  7. 던전 난이도 설정 함수
+    public void dungeonDifficulty(int difficulty){
+        if(difficulty == 3){
+            dungeonDtoDungeon.setDungeonDiff(difficulty + 1);
+        }else{
+            dungeonDtoDungeon.setDungeonDiff(difficulty);
+        }
+        DungeonView.getInstance().dungeonIndex();
+    }
     //  8. 몬스터 정보 표시 함수
 //    public ArrayList<DungeonDto_Monster> monsterPrint(int random){
 //        ArrayList<DungeonDto_Monster> list =
