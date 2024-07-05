@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.dto.CharacterDto;
+import model.dto.DungeonDto_Monster;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,7 +31,7 @@ public class AdminGameDao {
     public ArrayList<CharacterDto> characterAllPrint(){
         ArrayList<CharacterDto> list = new ArrayList<>();
         try{
-            String sql = "select * from mycharacter innerjoin myaccount on mycharacter.akey = mycharacter.akey ";
+            String sql = "select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey ";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
@@ -49,4 +50,59 @@ public class AdminGameDao {
         }
         return list;
     }   // characterAllPrint() end
-}
+
+    // 1-3 캐릭터 삭제
+    public boolean characterDelete(int ckey){
+        try{
+            String sql = "delete from mycharacter where ckey = '"+ckey+"' ";
+            ps = conn.prepareStatement(sql);
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // characterDelete() end
+
+    // 2-1 던전맵 전체 출력
+    public void dungeonAllPrint(){
+
+    }   // dungeonAllPrint() end
+
+    // 3-1 몬스터 전체 출력
+    public ArrayList<DungeonDto_Monster> monsterAllPrint(){
+        ArrayList<DungeonDto_Monster> list = new ArrayList<>();
+        try{
+            String sql = "select * from monster ";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                int mkey = rs.getInt("mkey");
+                String mname = rs.getString("mname");
+                DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster(mkey , mname);
+                list.add(dungeonDtoMonster);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }   // monsterAllPrint() end
+
+    // 3-3 몬스터 추가 페이지
+    public boolean addMonster(String mname){
+        try{
+            String sql = "insert into monster(mname) values ('"+mname+"')";
+            ps = conn.prepareStatement(sql);
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // addMonster() end
+
+}   // class end
