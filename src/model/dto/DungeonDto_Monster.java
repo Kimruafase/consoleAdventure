@@ -7,6 +7,7 @@ public class DungeonDto_Monster {
     private int mHp;
     private int mDamage;
 
+
     //  생성자
     public DungeonDto_Monster(){
         this.mHp = 100;
