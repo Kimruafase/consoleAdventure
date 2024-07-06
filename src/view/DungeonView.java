@@ -130,15 +130,15 @@ public class DungeonView {
             System.out.println("몬스터 번호  \t 몬스터 이름");
             System.out.println("\n-----------------------------------------\n");
             list.forEach(monsterInfo -> {
-                System.out.printf("%7d %7s \n", monsterInfo.getMkey(),monsterInfo.getMname());
+                System.out.printf("%7d %7s \n%s \n", monsterInfo.getMkey(),monsterInfo.getMname(),monsterInfo.getMimage());
                 System.out.println("\n-----------------------------------------\n");
             });
             System.out.println("\n-----------------------------------------\n");
-            monsterImage(DungeonController.getInstance().monsterTable());
+            // monsterImage(DungeonController.getInstance().monsterTable());
             System.out.println("\n-----------------------------------------\n");
         }
     }
-    //  9. 몬스터 이미지 함수
+   /* //  9. 몬스터 이미지 함수
     public void monsterImage(int ch){
         if(ch == 3){
             System.out.println("@@@@@@@@@@@@@@@*$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
@@ -312,7 +312,7 @@ public class DungeonView {
                     "@@@@@@@@@@@!!!!:        ;!!!!@@@@@@@@@@@@@@@@@@@@@\n" +
                     "@@@@@@@@@@@@@@@#########@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
         }
-    }
+    }*/
 
     // 진행 or 후퇴 함수
     public void goOrBack( ){

@@ -32,7 +32,8 @@ public class MyAccountView {
                 } else if (ch==4) {
                     findPWD();
                 } else if (ch==5) {
-                    return;
+                    System.out.println(">> 프로그램을 종료합니다.");
+                    break;
                 } else {
                     System.out.println("없는 기능 번호입니다.");
                 }
@@ -40,8 +41,8 @@ public class MyAccountView {
                 System.out.println(">> 잘못된 입력입니다. 초기메뉴로");
                 scan = new Scanner(System.in);
             }   // try end
-
         }   // while end
+        System.exit(0);
     }   // index() end
 
     // 로그인 후 페이지
@@ -50,7 +51,7 @@ public class MyAccountView {
             System.out.print(">> 1. 로그아웃 2. 내정보 3. 회원수정 4. 회원탈퇴 5. 게임시작 : ");   // 컨셉 상 설정한 메뉴를 입력 받기 위해 먼저 안내해준다.
             int ch = scan.nextInt();     // 위에 안내한 메뉴를 정수로 입력 받아 변수에 저장한다.
             if(ch==1){
-                logout(); return;
+                logout(); index();
             }else if(ch==2){
                 myInfo();
             }else if(ch==3){

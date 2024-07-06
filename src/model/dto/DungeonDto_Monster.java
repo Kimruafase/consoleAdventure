@@ -4,6 +4,7 @@ public class DungeonDto_Monster {
     //  멤버변수
     private int mkey;
     private String mname;
+    private String mimage;
     private int mHp;
     private int mDamage;
 
@@ -14,9 +15,10 @@ public class DungeonDto_Monster {
         this.mDamage = 10;
     }
 
-    public DungeonDto_Monster(int mkey, String mname, int mHp, int mDamage) {
+    public DungeonDto_Monster(int mkey, String mname, String mimage, int mHp, int mDamage) {
         this.mkey = mkey;
         this.mname = mname;
+        this.mimage = mimage;
         this.mHp = mHp;
         this.mDamage = mDamage;
     }
@@ -51,6 +53,14 @@ public class DungeonDto_Monster {
 
     public void setMname(String mname) {
         this.mname = mname;
+    }
+
+    public String getMimage() {
+        return mimage;
+    }
+
+    public void setMimage(String mimage) {
+        this.mimage = mimage;
     }
 
     @Override
