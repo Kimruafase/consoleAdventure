@@ -7,10 +7,18 @@ public class DungeonDto_Monster {
     private int mHp;
     private int mDamage;
 
+
     //  생성자
     public DungeonDto_Monster(){
         this.mHp = 100;
         this.mDamage = 10;
+    }
+
+    public DungeonDto_Monster(int mkey, String mname, int mHp, int mDamage) {
+        this.mkey = mkey;
+        this.mname = mname;
+        this.mHp = mHp;
+        this.mDamage = mDamage;
     }
 
     public int getmDamage() {
@@ -19,11 +27,6 @@ public class DungeonDto_Monster {
 
     public void setmDamage(int mDamage) {
         this.mDamage = mDamage;
-    }
-
-    public DungeonDto_Monster(int mkey, String mname) {
-        this.mkey = mkey;
-        this.mname = mname;
     }
 
     public int getmHp() {
@@ -55,6 +58,8 @@ public class DungeonDto_Monster {
         return "DungeonDto_Monster{" +
                 "mkey=" + mkey +
                 ", mname='" + mname + '\'' +
+                ", mHp=" + mHp +
+                ", mDamage=" + mDamage +
                 '}';
     }
 }

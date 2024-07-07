@@ -10,6 +10,8 @@ public class CharacterDto {
     private int akey;
     SkillDto SkillDto;
     private int cHpChange;
+    private String aid;
+
     //생성자
     public CharacterDto(){
         this.chp = 100;
@@ -92,5 +94,13 @@ public class CharacterDto {
 
     public void setAkey(int akey) {
         this.akey = akey;
+    }
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
     }
 }

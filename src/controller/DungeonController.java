@@ -26,15 +26,25 @@ public class DungeonController {
     public void gameOver( ) {
         if (characterDto.getChp() <= 0) {
             characterDto.setChp(100);
+            dungeonDtoDungeon.setDungeonState(0);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[캐릭터의 체력이 0 이하이므로 클리어하지 못했습니다.]]\n");
             System.out.println("=============== GAME OVER =============== ");
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("메인 메뉴로 돌아갑니다.");
+            System.out.println("\n-----------------------------------------\n");
             MenuView.mView.index2();
         } else if (dungeonDtoDungeon.getDungeonState() >= 100) {
             characterDto.setChp(100);
+            dungeonDtoDungeon.setDungeonState(0);
             System.out.println("\n-----------------------------------------\n");
             System.out.println("[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             System.out.println("=============== GAME CLEAR ============== ");
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("메인 메뉴로 돌아갑니다.");
+            System.out.println("\n-----------------------------------------\n");
             MenuView.mView.index2();
         } else {
             DungeonView.getInstance().goOrBack();
@@ -49,9 +59,9 @@ public class DungeonController {
     // 1. 전투 메소드
     public void myCharacterFight(String select){
         MySkillDto mySkillDto = DungeonDao.getInstance().useSkill(CharacterController.cController.loginCno, select);
-        int Cdamage = skillDto.getSkdamage() + mySkillDto.getSkdamage();
+        int Cdamage = (skillDto.getSkdamage()/dungeonDtoDungeon.getDungeonDiff()) + mySkillDto.getSkdamage();
         dungeonDtoMonster.setmHp(dungeonDtoMonster.getmHp()-Cdamage);
-        characterDto.setChp(characterDto.getChp()-dungeonDtoMonster.getmDamage());
+        characterDto.setChp(characterDto.getChp() - (dungeonDtoMonster.getmDamage() * dungeonDtoDungeon.getDungeonDiff()));
     }
     // 1-1. 전투 결과 메소드
     public void fightResult(){
@@ -68,8 +78,8 @@ public class DungeonController {
             System.out.println("전투에서 승리하였습니다!\n");
             characterDto.setChp(characterDto.getChp());
             dungeonDtoMonster.setmHp(100);
-            dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+dungeonDtoDungeon.getDungeonStateChange());
-            System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 증가합니다.\n");
+            dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+(dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()));
+            System.out.println("진행도가 " + (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()) + "%만큼 증가합니다.\n");
             System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
             gameOver();
         }
@@ -77,8 +87,8 @@ public class DungeonController {
     // 2. 체력 회복 함수
     public void hpRecovery( ){
         if(characterDto.getChp() < 100){
-            System.out.println("체력을 " + characterDto.getcHpChange() + "만큼 회복합니다.");
-            characterDto.setChp(characterDto.getChp()+characterDto.getcHpChange());
+            System.out.println("체력을 " + (int)(characterDto.getcHpChange()/dungeonDtoDungeon.getDungeonDiff()) + "만큼 회복합니다.");
+            characterDto.setChp(characterDto.getChp() + (int)(characterDto.getcHpChange() / dungeonDtoDungeon.getDungeonDiff()));
             if(characterDto.getChp() > 100){
                 characterDto.setChp(100);
             }
@@ -86,9 +96,9 @@ public class DungeonController {
             System.out.println("최대 체력이므로 더 이상 회복하지 못합니다.");
             characterDto.setChp(100);
         }
-        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+dungeonDtoDungeon.getDungeonStateChange());
+        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+(dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()));
         System.out.println("현재 체력은 " + characterDto.getChp() + "입니다.\n");
-        System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 증가합니다.\n");
+        System.out.println("진행도가 " + (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()) + "%만큼 증가합니다.\n");
         System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
         gameOver();
     }
@@ -103,36 +113,78 @@ public class DungeonController {
 
     //  4. 그대로 진행 함수
     public void goContinue( ){
-        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+dungeonDtoDungeon.getDungeonStateChange());
-        System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 증가합니다.\n");
+        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+ (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()));
+        System.out.println("진행도가 " + (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()) + "%만큼 증가합니다.\n");
         System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
         gameOver();
     }
 
     //  5. 뒤로 가기 함수
     public void goBackOneSpace( ){
-
         if(dungeonDtoDungeon.getDungeonState() > 0){
-            dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()-dungeonDtoDungeon.getDungeonStateChange());
+            dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()-(dungeonDtoDungeon.getDungeonStateChange() * dungeonDtoDungeon.getDungeonDiff()));
+            if(dungeonDtoDungeon.getDungeonState() < 0){
+                dungeonDtoDungeon.setDungeonState(0);
+            }
         }else {
             dungeonDtoDungeon.setDungeonState(0);
         }
-        System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 감소합니다.\n");
+        System.out.println("진행도가 " + (dungeonDtoDungeon.getDungeonStateChange() * dungeonDtoDungeon.getDungeonDiff()) + "%만큼 감소합니다.\n");
         System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
         gameOver();
     }
     //  6. 함정 발동 함수
     public void meetTrap(){
-        characterDto.setChp(characterDto.getChp()-characterDto.getcHpChange());
-        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+dungeonDtoDungeon.getDungeonStateChange());
-        System.out.println("체력이 " + characterDto.getcHpChange() + "만큼 감소합니다. ");
+        characterDto.setChp(characterDto.getChp()-(characterDto.getcHpChange() + (5 * dungeonDtoDungeon.getDungeonDiff())));
+        dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState() + (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()));
+        System.out.println("체력이 " + (characterDto.getcHpChange() + (5 * dungeonDtoDungeon.getDungeonDiff())) + "만큼 감소합니다. ");
         System.out.println("현재 체력은 " + characterDto.getChp() + "입니다.\n");
-        System.out.println("진행도가 " + dungeonDtoDungeon.getDungeonStateChange() + "%만큼 증가합니다.\n");
+        System.out.println("진행도가 " + (dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()) + "%만큼 증가합니다.\n");
         System.out.println("진행도 : " + dungeonDtoDungeon.getDungeonState() + "%");
         gameOver();
     }
+
+    //  7. 던전 난이도 설정 함수
+    public void dungeonDifficulty(int difficulty){
+        if(difficulty == 3){
+            dungeonDtoDungeon.setDungeonDiff(difficulty + 1);
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("HARD 난이도 던전으로 입장합니다.");
+            System.out.println("\n-----------------------------------------\n");
+        }else if(difficulty == 2){
+            dungeonDtoDungeon.setDungeonDiff(difficulty);
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("NORMAL 난이도 던전으로 입장합니다.");
+            System.out.println("\n-----------------------------------------\n");
+        }else{
+            dungeonDtoDungeon.setDungeonDiff(difficulty);
+            System.out.println("\n-----------------------------------------\n");
+            System.out.println("EASY 난이도 던전으로 입장합니다.");
+            System.out.println("\n-----------------------------------------\n");
+        }
+        System.out.println("\n-----------------------------------------\n");
+        System.out.println();
+        System.out.println();
+        System.out.println(" >>        던전 입장 중...        <<");
+        System.out.println();
+        System.out.println();
+        System.out.println("\n-----------------------------------------\n");
+        DungeonView.getInstance().dungeonIndex();
+    }
+
+    public int mKey = 0;
+
+    //  8-1. 몬스터 테이블 먼저 가져오는 함수
+    public int monsterTable(){
+        ArrayList<DungeonDto_Monster> list = DungeonDao.dungeonDao.monsterTable();
+        mKey = list.size();
+        int random = (int)(Math.random()*mKey+1);
+        return random;
+    }
+
     //  8. 몬스터 정보 표시 함수
-//    public ArrayList<DungeonDto_Monster> monsterPrint(int random){
-//        ArrayList<DungeonDto_Monster> list =
-//    }
+    public ArrayList<DungeonDto_Monster> monsterPrint(){
+        ArrayList<DungeonDto_Monster> list = DungeonDao.getInstance().monsterPrint(monsterTable());
+        return list;
+    }
 }

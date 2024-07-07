@@ -1,11 +1,13 @@
 package model.dao;
 
+import model.dto.DungeonDto_Monster;
 import model.dto.MySkillDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class DungeonDao {
         //  싱글톤
@@ -50,5 +52,43 @@ public class DungeonDao {
             System.out.println(e);
         }
         return null;
+    }
+    //  8-1. 몬스터 테이블 먼저 가져오는 함수
+    public ArrayList<DungeonDto_Monster> monsterTable(){
+        ArrayList<DungeonDto_Monster> list = new ArrayList<>();
+        try{
+            String sql = "select *from monster";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
+                dungeonDtoMonster.setMkey(rs.getInt("mkey"));
+                list.add(dungeonDtoMonster);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    //  몬스터 정보 표시 메소드
+    public ArrayList<DungeonDto_Monster> monsterPrint(int random){
+        ArrayList<DungeonDto_Monster> list = new ArrayList<>();
+        try{
+            String sql = "select *from monster where mkey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,random);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
+                dungeonDtoMonster.setMname(rs.getString("mname"));
+                dungeonDtoMonster.setMkey(rs.getInt("mkey"));
+                list.add(dungeonDtoMonster);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
     }
 }

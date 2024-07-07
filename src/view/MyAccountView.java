@@ -17,7 +17,7 @@ public class MyAccountView {
     // 첫화면
     public void index(){
         while (true){
-            System.out.print("0. 관리자모드 1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 : ");
+            System.out.print("0. 관리자모드 1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 5. 종료 : ");
             int ch = scan.nextInt();
             try{
                 if(ch==0){
@@ -31,6 +31,8 @@ public class MyAccountView {
                     findID();
                 } else if (ch==4) {
                     findPWD();
+                } else if (ch==5) {
+                    return;
                 } else {
                     System.out.println("없는 기능 번호입니다.");
                 }
@@ -45,7 +47,7 @@ public class MyAccountView {
     // 로그인 후 페이지
     public void index2(){
         while(true){        // 메뉴 설정을 종료되거나 오류가 생기기 전까지 반복하기 위해 while문
-            System.out.print(">> 1. 로그아웃 2. 내정보 3. 회원수정 4. 회원탈퇴 5. 게임시작 6. 종료 : ");   // 컨셉 상 설정한 메뉴를 입력 받기 위해 먼저 안내해준다.
+            System.out.print(">> 1. 로그아웃 2. 내정보 3. 회원수정 4. 회원탈퇴 5. 게임시작 : ");   // 컨셉 상 설정한 메뉴를 입력 받기 위해 먼저 안내해준다.
             int ch = scan.nextInt();     // 위에 안내한 메뉴를 정수로 입력 받아 변수에 저장한다.
             if(ch==1){
                 logout(); return;
