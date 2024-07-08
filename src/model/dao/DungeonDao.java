@@ -84,6 +84,7 @@ public class DungeonDao {
                 DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
                 dungeonDtoMonster.setMname(rs.getString("mname"));
                 dungeonDtoMonster.setMkey(rs.getInt("mkey"));
+                dungeonDtoMonster.setMimage(rs.getString("mimage"));
                 list.add(dungeonDtoMonster);
             }
         }catch (Exception e){

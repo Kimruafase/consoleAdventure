@@ -3,7 +3,7 @@ package model.dto;
 public class DungeonDto_Dungeon {
     private int dkey;
     private String dname;
-    private int ikey;
+    // private int ikey;
     private int dungeonState;
     private int dungeonStateChange;
     private int dungeonDiff;
@@ -13,10 +13,10 @@ public class DungeonDto_Dungeon {
         this.dungeonStateChange = 20;
     }
 
-    public DungeonDto_Dungeon(int dkey, String dname, int ikey) {
+    public DungeonDto_Dungeon(int dkey, String dname/*, int ikey*/) {
         this.dkey = dkey;
         this.dname = dname;
-        this.ikey = ikey;
+        // this.ikey = ikey;
     }
 
     public int getDungeonState() {
@@ -59,20 +59,19 @@ public class DungeonDto_Dungeon {
         this.dname = dname;
     }
 
-    public int getIkey() {
-        return ikey;
-    }
+    // public int getIkey() {
+   //      return ikey;
+    // }
 
-    public void setIkey(int ikey) {
-        this.ikey = ikey;
-    }
+    // public void setIkey(int ikey) {
+   //      this.ikey = ikey;
+    // }
 
     @Override
     public String toString() {
         return "DungeonDto_Dungeon{" +
                 "dkey=" + dkey +
                 ", dname='" + dname + '\'' +
-                ", ikey=" + ikey +
                 ", dungeonState=" + dungeonState +
                 ", dungeonStateChange=" + dungeonStateChange +
                 ", dungeonDiff=" + dungeonDiff +

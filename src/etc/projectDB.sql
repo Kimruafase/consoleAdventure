@@ -37,6 +37,7 @@ create table mycharacter(
 create table monster(
 	mkey int auto_increment,
 	mname varchar(20),
+    mimage longtext,
 	primary key(mkey)
 );
 create table dungeonDetail(
@@ -64,14 +65,14 @@ create table Myskill(
 	on delete cascade  
 	on update cascade
 );
-create table dungeon(	-- 필요한 테이블인지 회의 필요!
+/*create table dungeon(	-- 필요한 테이블인지 회의 필요!
 	dgkey int auto_increment,
 	mkey int,
 	dtkey int,
 	primary key(dgkey),
 	foreign key(mkey) references monster(mkey),
 	foreign key(dtkey) references dungeonDetail(dtkey)
-);
+);*/
 create table admin(
 	adkey int auto_increment,
 	adid varchar(50) not null unique,
@@ -85,7 +86,7 @@ select * from monster;
 select * from dungeonDetail;
 select * from skill;
 select * from Myskill;
-select * from dungeon;
+-- select * from dungeon;
 select * from admin;
 
 #테스트용
@@ -99,9 +100,109 @@ insert into mycharacter(cnickname , akey) values ('카카오' , 1);
 insert into mycharacter(cnickname , akey) values ('네이버' , 2);
 insert into mycharacter(cnickname , akey) values ('페이커' , 3);
 
-insert into monster(mname) values ('스켈레톤');
-insert into monster(mname) values ('좀비');
-insert into monster(mname) values ('슬라임');
+insert into monster(mname , mimage) values ('스켈레톤' , '
+@@@@@@@@@;#@@=#@@@@@@@@@@@@@@@
+@@@@@@@@*.!#@**@@@@@@@@@@@@@@@
+@@@@@@@@-.;!:;$@@@@@@@@@@@@@@@
+@@@@@@@#,.:$!=!!$@@@@@@@@@@@@@
+@@@@@@,~,-!!:~;!!$#@@@@@@@@@@@
+@@@@@ .,=~*:-~;:!==@@@@@@@@@@@
+@@@@#,=.:::,,~:;!***@@@@@@@@@@
+@@@@~$.;::;-,~;;!**=@@@@@@@@@@
+@@@#:==!-:!-~;:;****$@@@@@@@@@
+@@@;,!.=~;-:;:;;!***=@@@@@@@@@
+@@==~;=$!*!**!!!*=**#@@@@@@@@@
+@@@:!!;;!!##==!**==*#@@@@@@@@@
+@@@@=#$,,#$$#$;!!#!$=@@@@@@@@@
+@@@@$#=.~@###$:!=$;=$@@@@@@@@@
+@@@:*#:,~@##$$!;=;~#;*@@@@@@@@
+@@@,!@-!,;#$$$,:@@@@@-*@@@@@@@
+@@@@!,,-,-~;;;:!$@=#!=:*@@@@@@
+@@@@@=:,::=#=##;!#@$;:$~*@@@@@
+@@@@@@*-!;#!=@@!;@;.-!$@,*@@@@
+$=@@@@-,~==*@@@$;$@@#**#$-;#@@
+*-*@@@*--~;=@@@*=#@$==*!=***@@
+*,~**#@@@@@@@@@=;,@##!~!#;~#@@
+!:.:!$@@@@@@@@@!=@**!:=@@:*@@@
+#;-.~*@@@@@@@@$-*$;$@#=@@~;@@@
+@$$;,:*@@@@@@@~*@@@!!:**@~;@@@
+@@@$-,:*#@@@@*:@@@#=#*!~=!*@@@
+@@@@@*,:#@@@*~=@@@$!!;*;@!$@@@
+@@@@@@=-!$=@=;=@@@-!#~#;@!$@@@
+@@@@@@@@#*:!;@@@;-*@@@:~@!$@@@
+@@@@@@@$~#=$=@@@@~@@@@*!*:=@@@
+@@@@@@@@;#*$=@@=!-@@@@=!=*@@@@
+@@@@@@@@@#*$$@@@@;=@@@@@#*#@$#
+@@@@@@@@@@@=@@@=$=*#@@@@*!;@==
+@@@@@@@@@@@@@@@=*=#$@@@@==#**$
+');
+insert into monster(mname , mimage) values ('좀비' , '
+@@@@@@@@@*;*#@=*=#$@@@@@@@@@@@
+@@@@@@@@$!!!~  ..:=##@@@@@@@@@
+@@@@@@==*:.    ..~;=##@@@@@@@@
+@@@@@$!:.  .,.-!==$$#@@@@@@@@@
+@@@@@=;,,,-:!$====$=$$=$@@@@@@
+@@@@@=~;!=$$=$=**!;---;=@@@@@@
+@$=;==;;!!$$=*!- ...,::=$#@@@@
+@#;,,*****=*:-....-~;*=$$#@@@@
+@#.;;*$$==!:...,:;*$$$=@$##@@@
+@#~:#@#$=!~,,-;*=##$=!;==$#@@@
+@$=-#*$$;~~;!*==!=$==;:;*$@@@@
+@@$:!:=::;*$$;~~-!==*::;$@@@@@
+@@=$!~!~*==*~,  .;**!;~!$@@@@@
+@@@@=!;*$;,-..,~:!==**!!$@@@@@
+@@@@$=*=;,   ,;;,;====$!!$#@@@
+@@@@#==*,-:.,;!, .~!==*==$$@@@
+@@@@##@$~;=~!!;~  ,!:*;**$#@@@
+@@@@@@$:**=;=~-.  -:,:=**#@@@@
+@@@@#$*.-~..,-*$$:..;;:;*#@@@@
+@@##=$* .-;~;.-~-,.~$*!=#@@@@@
+@@@@#@@#!.......-~:;$=***$#@@@
+@ .: ~@$!,,-.!**!;!==*!;;!#@@@
+@,*!#!@*!@@#@$!!$*==!;;;;!#@@@
+=#==#$@=;*:-:!!!=!!!;!;;;!#@@@
+*~!*-;$#*==;-;!=!;=*!*;;!##@@@
+@#;$$;!=**,:;;:,~;==!!;;*#@@@@
+@@#-;!*#**~~.  ,;!;==**!*#@@@@
+@@@@@##$*=**!--~=#!==$=!!#@@@@
+@@@#$$$*$$;!;;:;;***:!***$@@@@
+@@@@#$=$##*;;!:;!!!;:$=*=$@@@@
+@@@@@@@@@@$==*;:=*:;!$=*$#@@@@
+@@@@@@@@@@@@$**!*=!!=$==##@@@@
+@@@@@@@@@@@$**$*;!!=$=$#@@@@@@
+@@@@@@@@@@#$====!;;;*=$$#@@@@@
+@@@@@@@@@@#=*!!!==!:;!*=$#@@@@
+@@@@@@@@@*!:::::;***==$$=#@@@@
+@@@@@@@@@=:::;!!=*;!**==#@@@@@
+@@@@@@@@#$;;!!*=#*;;;!**#@@@@@
+@@@@@@@@*;!!==!=@=*!;!*##@@@@@
+@@@@@@@@:,-~~!**@@=!;;!=@@@@@@
+@@@@@@@@$*=*;;=#@@==!!***$;=#@
+@@@@@@@#==$###$#@@@$**=***!:,=
+@@@@@@@###@@@@##@@@@@#$###@$@@
+');
+insert into monster(mname , mimage)values ('슬라임' , '
+                 ~-~~-        
+      .         ~;-  !=       
+     :-         ::    ,*      
+     ;:-       ;~.-    =      
+      =-      =:-, .   .;     
+      ,    .-.:~-,.~.  .@     
+      *  ,;.~:~-,,   ;.,-     
+       #~,-::~-,,.    ,=      
+       ~~:::~--,,.     .      
+      ,~ #::~-,,,~            
+      ,:@@::~-,# @..    #     
+     #,:;;!;~-,@.@, ... #     
+     #,:;::#=-,,--,,.  .$     
+     .-:;::##--,,,,,, . #     
+      ,-~::!---,,,,,,,..-     
+      --,~::!~--,,,,,, !      
+       ---:::~~~----,-!       
+        -;:-~~~~~-,!;-        
+           ::,  ::~           
+                              
+');
 
 insert into dungeonDetail(dname) values ('초원');
 insert into dungeonDetail(dname) values ('동굴');
@@ -117,9 +218,9 @@ insert into Myskill(ckey, skkey) values (1,1);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
-insert into dungeon(mkey, dtkey) values (1,1);
-insert into dungeon(mkey, dtkey) values (2,2);
-insert into dungeon(mkey, dtkey) values (3,3);
+-- insert into dungeon(mkey, dtkey) values (1,1);
+-- insert into dungeon(mkey, dtkey) values (2,2);
+-- insert into dungeon(mkey, dtkey) values (3,3);
 
 select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
 select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';

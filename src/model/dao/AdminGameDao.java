@@ -1,7 +1,9 @@
 package model.dao;
 
 import model.dto.CharacterDto;
+import model.dto.DungeonDto_Dungeon;
 import model.dto.DungeonDto_Monster;
+import model.dto.SkillDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,10 +68,10 @@ public class AdminGameDao {
         return false;
     }   // characterDelete() end
 
-    // 2-1 던전맵 전체 출력
-    public void dungeonAllPrint(){
+    /*// 2-1 던전맵 전체 출력
+    public ArrayList<DungeonDto_Dungeon> dungeonAllPrint(){
 
-    }   // dungeonAllPrint() end
+    }   // dungeonAllPrint() end*/
 
     // 3-1 몬스터 전체 출력
     public ArrayList<DungeonDto_Monster> monsterAllPrint(){
@@ -81,7 +83,11 @@ public class AdminGameDao {
             while(rs.next()){
                 int mkey = rs.getInt("mkey");
                 String mname = rs.getString("mname");
-                DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster(mkey , mname);
+                String mimage = rs.getString("mimage");
+                DungeonDto_Monster dungeonDtoMonster = new DungeonDto_Monster();
+                dungeonDtoMonster.setMkey(mkey);
+                dungeonDtoMonster.setMname(mname);
+                dungeonDtoMonster.setMimage(mimage);
                 list.add(dungeonDtoMonster);
             }
         }catch (Exception e){
@@ -91,10 +97,12 @@ public class AdminGameDao {
     }   // monsterAllPrint() end
 
     // 3-3 몬스터 추가 페이지
-    public boolean addMonster(String mname){
+    public boolean addMonster(String mname , String mimage){
         try{
-            String sql = "insert into monster(mname) values ('"+mname+"')";
+            String sql = "insert into monster(mname , mimage) values (? , ?)";
             ps = conn.prepareStatement(sql);
+            ps.setString(1, mname);
+            ps.setString(2, mimage);
             int count = ps.executeUpdate();
             if(count==1){
                 return true;
@@ -104,5 +112,93 @@ public class AdminGameDao {
         }
         return false;
     }   // addMonster() end
+
+    // 3-4. 몬스터 삭제
+    public boolean deleteMonster(int mkey){
+        try{
+            String sql = "delete from monster where mkey = '"+mkey+"'";
+            ps = conn.prepareStatement(sql);
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // deleteMonster() end
+
+    // 4-1. 스킬전체 프린트
+    public  ArrayList<SkillDto> skillAllPrint(){
+        ArrayList<SkillDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from skill";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                int skkey = rs.getInt("skkey");
+                String skname = rs.getString("skname");
+                String skinfo = rs.getString("skinfo");
+                int skdamage = rs.getInt("skdamage");
+
+                SkillDto skillDto = new SkillDto(skkey , skname , skinfo , skdamage);
+                list.add(skillDto);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }   // skillAllPrint() end
+
+    // 4-3. 스킬추가
+    public boolean addSkill(SkillDto skillDto){
+        try{
+            String sql = "insert into skill(skname,skinfo,skdamage) values (?, ?, ?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,skillDto.getSkname());
+            ps.setString(2,skillDto.getSkinfo());
+            ps.setInt(3,skillDto.getSkdamage());
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // addSkill() end
+
+    // 4-4. 스킬수정
+    public boolean updateSkill(SkillDto skillDto){
+        try{
+            String sql = "update skill set skinfo = ? , skdamage = ? where skkey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,skillDto.getSkinfo());
+            ps.setInt(2,skillDto.getSkdamage());
+            ps.setInt(3,skillDto.getSkkey());
+            int count = ps.executeUpdate();
+            if(count==1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // updateSkill() end
+
+    // 4-5. 스킬삭제
+    public boolean deleteSkill(int skkey){
+        try{
+            String sql = "delete from skill where skkey = '"+skkey+"'";
+            ps = conn.prepareStatement(sql);
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }   // deleteSkill() end
 
 }   // class end
