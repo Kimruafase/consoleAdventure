@@ -8,10 +8,8 @@ use testbase;
 drop table if exists myaccount;
 drop table if exists mycharacter;
 drop table if exists monster;
-drop table if exists dungeonDetail;
 drop table if exists skill;
 drop table if exists Myskill;
-drop table if exists dungeon;
 drop table if exists admin;
 
 create table myaccount(
@@ -40,12 +38,7 @@ create table monster(
     mimage longtext,
 	primary key(mkey)
 );
-create table dungeonDetail(
-	dtkey int auto_increment,
-	dname varchar(20),
-	dlevel tinyint default 1,
-	primary key(dtkey)
-);
+
 create table skill(
 	skkey int auto_increment,
 	skname varchar(10),
@@ -65,14 +58,7 @@ create table Myskill(
 	on delete cascade  
 	on update cascade
 );
-/*create table dungeon(	-- 필요한 테이블인지 회의 필요!
-	dgkey int auto_increment,
-	mkey int,
-	dtkey int,
-	primary key(dgkey),
-	foreign key(mkey) references monster(mkey),
-	foreign key(dtkey) references dungeonDetail(dtkey)
-);*/
+
 create table admin(
 	adkey int auto_increment,
 	adid varchar(50) not null unique,
@@ -83,10 +69,8 @@ create table admin(
 select * from myaccount;
 select * from mycharacter;
 select * from monster;
-select * from dungeonDetail;
 select * from skill;
 select * from Myskill;
--- select * from dungeon;
 select * from admin;
 
 #테스트용
@@ -218,9 +202,6 @@ insert into Myskill(ckey, skkey) values (1,1);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
--- insert into dungeon(mkey, dtkey) values (1,1);
--- insert into dungeon(mkey, dtkey) values (2,2);
--- insert into dungeon(mkey, dtkey) values (3,3);
 
 select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
 select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
