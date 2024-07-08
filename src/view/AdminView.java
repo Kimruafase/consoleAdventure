@@ -35,7 +35,9 @@ public class AdminView {
 
     // 메뉴버튼
     public void adminMenu(){
-        System.out.print(">> 0. 로그아웃 1. 회원관리 2. 게임관리 : ");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
+        System.out.println(">> 0. 로그아웃 1. 회원관리 2. 게임관리 : ");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         int ch = scan.nextInt();
         if(ch==0){
             adminLogout();
