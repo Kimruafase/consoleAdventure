@@ -9,8 +9,15 @@ public class CharacterController {
     //1. 캐릭터생성함수
     public boolean createChar(model.dto.CharacterDto characterDTO){
         characterDTO.setAkey(MyAccountController.getInstance().loginAkey);
-        boolean result = CharacterDAO.characterDAO.createChar(characterDTO);
-        return result;
+        // 캐릭터 생성
+        int result = CharacterDAO.characterDAO.createChar(characterDTO);
+        // 기본공격 대입
+        if( result > 0 ){
+            characterDTO.setCkey( result );
+            CharacterDAO.characterDAO.charattack(characterDTO);
+            return true;
+        }
+        return false;
     }
     public int loginCno = 0;
     public void logout(){loginCno = 0;}
