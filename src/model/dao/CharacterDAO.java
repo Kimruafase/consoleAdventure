@@ -1,5 +1,9 @@
 package model.dao;
 
+import controller.CharacterController;
+import model.dto.CharacterDto;
+
+import javax.annotation.processing.Generated;
 import java.sql.*;
 
 public class CharacterDAO { //cs
@@ -19,15 +23,20 @@ public class CharacterDAO { //cs
     } //DE
 
     //1. 캐릭터생성함수
-    public boolean createChar(model.dto.CharacterDto characterDTO){ //ccs
+    public int createChar(model.dto.CharacterDto characterDTO){ //ccs
         try {
             String sql = "insert into mycharacter(cnickname,akey) values (?,?)";
-            ps = conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql , Statement.RETURN_GENERATED_KEYS ); // 기재된 SQL에서 생성된 키를 리턴 하겠다는 속성
             ps.setString(1, characterDTO.getCnickname());
             ps.setInt(2, characterDTO.getAkey());
             int count = ps.executeUpdate();
-            if (count == 1){return true;}
-        } catch (Exception e) {System.out.println(e);} return false;
+            if (count == 1){
+                rs = ps.getGeneratedKeys();
+                rs.next();
+                return rs.getInt( 1 );
+            }
+
+        } catch (Exception e) {System.out.println(e);} return 0;
     } //cce
 
     //2. 캐릭터 접속함수
@@ -55,6 +64,17 @@ public class CharacterDAO { //cs
         }catch (Exception e){System.out.println(e);} return false;
     }
 
+    //4. 캐릭터 기본공격 추가 함수
+    public boolean charattack(CharacterDto characterDto){
+        try{
+            String sql = "insert into Myskill( ckey, skkey) values (?,1)";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,characterDto.getCkey());
+            int count = ps.executeUpdate();
+            if (count == 1 )return true;
+        }
+        catch (Exception e){System.out.println(e);} return false;
+    }
 
 
 } //ce
