@@ -85,7 +85,7 @@ public class MenuView {
                 System.out.printf("%d %-10s %10s%10d \n",showskill.getSkkey(), showskill.getSkname(), showskill.getSkinfo(), showskill.getSkdamage());
                 System.out.println("==================================================");
             });
-            shop();//
+            shop();
         }
     }
 
