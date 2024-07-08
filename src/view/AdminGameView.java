@@ -2,7 +2,6 @@ package view;
 
 import controller.AdminGameController;
 import model.dto.CharacterDto;
-import model.dto.DungeonDto_Dungeon;
 import model.dto.DungeonDto_Monster;
 import model.dto.SkillDto;
 
@@ -145,10 +144,10 @@ public class AdminGameView {
     // 3-3 몬스터 추가 페이지
     public void addMonster(){
         System.out.print(">> 추가할 몬스터 이름을 입력해주세요 : ");
-        String mname = scan.next(); // 몬스터 이름을 공백 포함해서 한 줄 전체로 받음
+        String mname = scan.next();
         scan.nextLine();
         StringBuilder input = new StringBuilder();
-        System.out.println(">> 추가할 몬스터 이미지를 입력해주세요 : ");
+        System.out.println(">> 추가할 몬스터 이미지를 입력해주세요 :");
         boolean isFirstLine = true;
         while (scan.hasNextLine()) {
             String line = scan.nextLine();
