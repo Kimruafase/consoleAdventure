@@ -118,7 +118,7 @@ public class MenuView {
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("구매할 스킬 번호를 입력하세요 ");
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        int ch = scan.nextInt();
+        int ch = scan.nextInt();    //
 
         boolean result = MenuController.MController.buyskill(ch);
 
