@@ -2,6 +2,7 @@ package controller;
 
 import model.dao.MenuDAO;
 import model.dto.MySkillDto;
+import model.dto.SkillDto;
 
 import java.util.ArrayList;
 
@@ -24,4 +25,14 @@ public static MenuController MController = new MenuController();
         return MenuDAO.MDAO.skillinfo(CharacterController.cController.loginCno);
     }
 
+    //4-1 스킬 목록 기능
+    public ArrayList<SkillDto> showshopskill(){
+        return  MenuDAO.MDAO.showshopskill();
+    }
+
+    //4-2 스킬 구입 기능
+    public boolean buyskill(int ch){
+        int ckey = CharacterController.cController.loginCno;
+        return MenuDAO.MDAO.buyskill(ch,ckey);
+    }
 }

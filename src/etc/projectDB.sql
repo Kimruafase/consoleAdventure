@@ -188,9 +188,6 @@ insert into monster(mname , mimage)values ('슬라임' , '
                               
 ');
 
-insert into dungeonDetail(dname) values ('초원');
-insert into dungeonDetail(dname) values ('동굴');
-insert into dungeonDetail(dname) values ('용암');
 
 insert into skill(skname,skinfo,skdamage) values ('기본공격', '기본공격을 합니다.','0');
 insert into skill(skname,skinfo,skdamage) values ('참격','참격을날립니다.',10);

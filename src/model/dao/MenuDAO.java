@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.dto.MySkillDto;
+import model.dto.SkillDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,4 +70,36 @@ ResultSet rs;
         } catch (Exception e){System.out.println(e);} return list;
     }
 
+    //4-1 스킬 목록 기능
+    public ArrayList<SkillDto> showshopskill(){
+        ArrayList<SkillDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from skill";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                SkillDto skillDto = new SkillDto();
+                skillDto.setSkkey(rs.getInt("skkey"));
+                skillDto.setSkname(rs.getString("skname"));
+                skillDto.setSkinfo(rs.getString("skinfo"));
+                skillDto.setSkdamage(rs.getInt("skdamage"));
+
+                list.add(skillDto);
+            }
+        }
+        catch (Exception e){System.out.println(e);} return list;
+    }
+
+    //4-2 스킬 구입 기능
+    public boolean buyskill(int ch,int ckey){
+        try{
+            String sql = "insert into Myskill(ckey, skkey) values (?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,ckey);
+            ps.setInt(2,ch);
+            int count = ps.executeUpdate();
+            if (count == 1){return true;}
+        }
+        catch(Exception e){System.out.println(e);} return false;
+    }
 }
