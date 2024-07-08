@@ -63,8 +63,8 @@ public class DungeonController {
         dungeonDtoMonster.setmHp(dungeonDtoMonster.getmHp()-Cdamage);
         characterDto.setChp(characterDto.getChp() - (dungeonDtoMonster.getmDamage() * dungeonDtoDungeon.getDungeonDiff()));
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("현재 당신의 캐릭터가 몬스터에게 가한 데미지는 " + Cdamage + "입니다.");
-        System.out.println("현재 몬스터가 당신의 캐릭터에게 가한 데미지는 " + dungeonDtoMonster.getmDamage() + "입니다. ");
+        System.out.println("           현재 당신의 캐릭터가 몬스터에게 가한 데미지는 " + Cdamage + "입니다.");
+        System.out.println("           현재 몬스터가 당신의 캐릭터에게 가한 데미지는 " + dungeonDtoMonster.getmDamage() + "입니다. ");
     }
     // 1-1. 전투 결과 메소드
     public void fightResult(){
@@ -96,7 +96,7 @@ public class DungeonController {
                 characterDto.setChp(100);
             }
         }else{
-            System.out.println("최대 체력이므로 더 이상 회복하지 못합니다.");
+            System.out.println("           최대 체력이므로 더 이상 회복하지 못합니다.");
             characterDto.setChp(100);
         }
         dungeonDtoDungeon.setDungeonState(dungeonDtoDungeon.getDungeonState()+(dungeonDtoDungeon.getDungeonStateChange() / dungeonDtoDungeon.getDungeonDiff()));

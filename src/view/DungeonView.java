@@ -127,7 +127,7 @@ public class DungeonView {
         ArrayList<DungeonDto_Monster> list = DungeonController.getInstance().monsterPrint();
         if(list.isEmpty()){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("몬스터 정보가 없습니다.");
+            System.out.println("           몬스터 정보가 없습니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else{
             System.out.println("몬스터 번호  \t 몬스터 이름");
