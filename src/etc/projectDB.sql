@@ -27,6 +27,8 @@ create table mycharacter(
 	cnickname varchar(20) not null unique,
 	chp int default 100,
 	primary key(ckey),
+    cexp int default 1,
+    cmoney int default 0,
 	akey int,
 	foreign key(akey) references myaccount(akey)
 	on delete cascade  
@@ -64,6 +66,15 @@ create table admin(
 	adid varchar(50) not null unique,
 	adpwd varchar(50) not null,
 	primary key(adkey)
+);
+
+create table freinds(
+fkey int auto_increment,
+primary key(fkey),
+fromckey int,
+tockey int,
+foreign key(fromckey) references mycharacter(ckey), #내 캐릭터키랑
+foreign key(tockey) references mycharacter(ckey) #상대방 캐릭터키
 );
 
 select * from myaccount;
@@ -199,7 +210,8 @@ insert into Myskill(ckey, skkey) values (1,1);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
-
 select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
 select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
 
+insert into freinds(fromckey, tockey) values (1,2);
+select * from freinds;
