@@ -21,7 +21,6 @@ public class CharacterDto {
         this.cHpChange = 50;
         this.ckey = CharacterController.cController.loginCno;
         this.cLevel = 1;
-        this.cExp = 20;
     }
 
     public CharacterDto(int ckey, String cnickname, int chp, int akey, model.dto.SkillDto skillDto, int cHpChange, String aid, int cExp, int cLevel) {

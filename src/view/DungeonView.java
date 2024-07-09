@@ -111,7 +111,7 @@ public class DungeonView {
 
     public void myCharacterFight(){
         while (true){
-            System.out.println("\t스킬을 사용하려면 스킬 이름을 입력하세요. \n기본 공격을 하고 싶다면 기본공격을 입력하세요.\n");
+            System.out.println("\t스킬을 사용하려면 스킬 이름을 입력하세요. \n\t기본 공격을 하고 싶다면 기본공격을 입력하세요.\n");
             System.out.println("\t몬스터에게 가하는 데미지는 캐릭터 기본 데미지 + 스킬 데미지입니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             MenuView.mView.skillinfo();
@@ -180,6 +180,20 @@ public class DungeonView {
             System.out.println("\t메인 메뉴로 돌아갑니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             MenuView.mView.index2();
+        }
+    }
+
+    //  9. 레벨 및 경험치 함수
+    public void characterLevelAndExp(){
+        int level = DungeonController.getInstance().characterLevelAndExp();
+        if(level == 0){
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t레벨이 0입니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+        }else{
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t캐릭터의 레벨은 " + level + "입니다. ");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }
 
