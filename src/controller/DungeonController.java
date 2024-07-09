@@ -196,7 +196,7 @@ public class DungeonController {
     //  9. 레벨 및 경험치 함수
     public void characterLevelAndExp(){
         int cExp = DungeonDao.getInstance().characterLevelAndExp(CharacterController.cController.loginCno);
-        int cLevel = cExp % 100;
+        int cLevel = (int)(cExp / 100);
         characterDto.setcLevel(characterDto.getcLevel()+cLevel);
     }
 
