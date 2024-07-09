@@ -50,9 +50,9 @@ public class MenuView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t닉네임  HP");
+            System.out.println("\t닉네임  HP  소지금");
             result.forEach(charinfo ->{
-                System.out.printf("\t%s %d \n" ,charinfo.getCnickname(), charinfo.getChp() );
+                System.out.printf("\t%s %d   %d\n" ,charinfo.getCnickname(), charinfo.getChp() ,charinfo.getCmoney());
             });
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
@@ -177,4 +177,21 @@ public class MenuView {
             System.out.println(">> 해당 캐릭터가 존재하지 않습니다.");
         }
     }   // addFriends() end
+
+    //5 getskill
+    public void getskill(){
+        boolean result = MenuController.MController.getskill();
+        if (result){
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t스킬 구매 성공");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+        }
+        else {
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t스킬 구매 실패");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+        }
+    }
+
+
 }

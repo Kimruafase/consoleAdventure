@@ -42,6 +42,7 @@ ResultSet rs;
                 characterDTO.setCkey(rs.getInt("ckey"));
                 characterDTO.setCnickname(rs.getString("cnickname"));
                 characterDTO.setChp(rs.getInt("chp"));
+                characterDTO.setCmoney(rs.getInt("cmoney"));
                 list.add(characterDTO);
             }
         } catch (Exception e){System.out.println(e);} return list;
@@ -101,5 +102,18 @@ ResultSet rs;
             if (count == 1){return true;}
         }
         catch(Exception e){System.out.println(e);} return false;
+    }
+
+    //5
+    public boolean getskill(int cmoney,int ckey){
+        try{
+            String sql = "update mycharacter set cmoney = ? where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,cmoney);
+            ps.setInt(2,ckey);
+            int count = ps.executeUpdate();
+            if (count == 1) {return true;}
+        }
+        catch (Exception e){System.out.println(e);} return false;
     }
 }

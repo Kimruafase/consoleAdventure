@@ -46,6 +46,7 @@ create table skill(
 	skname varchar(10),
 	skinfo varchar(40),
 	skdamage int default 0,
+    skmoney int default 0,
 	primary key (skkey)
 );
 create table Myskill(
@@ -91,7 +92,7 @@ insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bk','1234','유재석','01077778888','990808');
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bq','1234','강호동','01066668888','891111');
 
-insert into mycharacter(cnickname , akey) values ('카카오' , 1);
+insert into mycharacter(cnickname , akey, cmoney) values ('카카오' , 1 , 1000000);
 insert into mycharacter(cnickname , akey) values ('네이버' , 2);
 insert into mycharacter(cnickname , akey) values ('페이커' , 3);
 
@@ -200,10 +201,10 @@ insert into monster(mname , mimage)values ('슬라임' , '
 ');
 
 
-insert into skill(skname,skinfo,skdamage) values ('기본공격', '기본공격을 합니다.','0');
-insert into skill(skname,skinfo,skdamage) values ('참격','참격을날립니다.',10);
-insert into skill(skname,skinfo,skdamage) values ('파이어볼','파이어볼 날립니다.',20);
-insert into skill(skname,skinfo,skdamage) values ('활쏘기','화살을 쏩니다.',30);
+insert into skill(skname,skinfo,skdamage,skmoney) values ('기본공격', '기본공격을 합니다.','0',0);
+insert into skill(skname,skinfo,skdamage,skmoney) values ('참격','참격을날립니다.',10, 10);
+insert into skill(skname,skinfo,skdamage,skmoney) values ('파이어볼','파이어볼 날립니다.',20, 20);
+insert into skill(skname,skinfo,skdamage,skmoney) values ('활쏘기','화살을 쏩니다.',30, 30);
 
 insert into Myskill(ckey, skkey) values (1,2);
 insert into Myskill(ckey, skkey) values (1,1);
