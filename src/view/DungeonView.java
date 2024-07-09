@@ -185,16 +185,8 @@ public class DungeonView {
 
     //  9. 레벨 및 경험치 함수
     public void characterLevelAndExp(){
-        int level = DungeonController.getInstance().characterLevelAndExp();
-        if(level == 0){
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t레벨이 0입니다.");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }else{
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t캐릭터의 레벨은 " + level + "입니다. ");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }
+        DungeonController.getInstance().characterLevelAndExp();
+
     }
 
 }

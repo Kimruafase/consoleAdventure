@@ -50,9 +50,10 @@ public class MenuView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t닉네임  HP  소지금");
+            System.out.println("\t닉네임  HP  소지금  레벨");
+            DungeonView.getInstance().characterLevelAndExp();
             result.forEach(charinfo ->{
-                System.out.printf("\t%s %d   %d\n" ,charinfo.getCnickname(), charinfo.getChp() ,charinfo.getCmoney());
+                System.out.printf("\t%s %d   %d %d\n" ,charinfo.getCnickname(), charinfo.getChp() ,charinfo.getCmoney(),charinfo.getcLevel());
             });
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
