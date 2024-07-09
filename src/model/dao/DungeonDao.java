@@ -92,4 +92,38 @@ public class DungeonDao {
         }
         return list;
     }
+
+    //  9. 레벨 및 경험치 함수
+    public int characterLevelAndExp(int cKey){
+        int cExp = 0;
+        try{
+            String sql = "select *from mycharacter where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,cKey);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                cExp = rs.getInt("cexp");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return cExp;
+    }
+
+    //  10. 던전 클리어 후 경험치 추가 함수
+    public boolean getDungeonClearExp(int cExp, int cKey){
+        try{
+            String sql = "update mycharacter set cexp = cexp + ? where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,cExp);
+            ps.setInt(2,cKey);
+            int count = ps.executeUpdate();
+            if(count == 1){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }

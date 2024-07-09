@@ -38,8 +38,10 @@ public class DungeonController {
         } else if (dungeonDtoDungeon.getDungeonState() >= 100) {
             characterDto.setChp(100);
             dungeonDtoDungeon.setDungeonState(0);
+            characterDto.setcExp(20 * dungeonDtoDungeon.getDungeonDiff());
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
+            getDungeonClearExp();
             System.out.println("\t=============== GAME CLEAR ============== ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -192,7 +194,17 @@ public class DungeonController {
     }
 
     //  9. 레벨 및 경험치 함수
-    public void characterLevelAndExp(){
+    public int characterLevelAndExp(){
+        int cExp = DungeonDao.getInstance().characterLevelAndExp(CharacterController.cController.loginCno);
+        int cLevel = cExp % 100;
+        characterDto.setcLevel(characterDto.getcLevel()+cLevel);
+        return characterDto.getcLevel();
+    }
 
+    //  10. 던전 클리어 후 경험치 추가 함수
+    public void getDungeonClearExp(){
+        int cExp = characterDto.getcExp();
+        System.out.println("\t경험치를 " + cExp + "만큼 획득하셨습니다.");
+        DungeonDao.getInstance().getDungeonClearExp(cExp,CharacterController.cController.loginCno);
     }
 }
