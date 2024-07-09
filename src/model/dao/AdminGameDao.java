@@ -140,8 +140,9 @@ public class AdminGameDao {
                 String skname = rs.getString("skname");
                 String skinfo = rs.getString("skinfo");
                 int skdamage = rs.getInt("skdamage");
+                int skmoney = rs.getInt("skmoney");
 
-                SkillDto skillDto = new SkillDto(skkey , skname , skinfo , skdamage);
+                SkillDto skillDto = new SkillDto(skkey , skname , skinfo , skdamage , skmoney);
                 list.add(skillDto);
             }
         }catch (Exception e){
