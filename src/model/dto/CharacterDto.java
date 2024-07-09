@@ -135,4 +135,12 @@ public class CharacterDto {
     public void setcLevel(int cLevel) {
         this.cLevel = cLevel;
     }
+
+    public int getCmoney() {
+        return cmoney;
+    }
+
+    public void setCmoney(int cmoney) {
+        this.cmoney = cmoney;
+    }
 }
