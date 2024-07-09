@@ -214,4 +214,6 @@ select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.a
 select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
 
 insert into freinds(fromckey, tockey) values (1,2);
-select * from freinds;
+insert into freinds(fromckey, tockey) values (1,3);
+
+select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;

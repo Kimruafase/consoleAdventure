@@ -2,9 +2,11 @@ package model.dao;
 
 import controller.CharacterController;
 import model.dto.CharacterDto;
+import model.dto.FreindsDto;
 
 import javax.annotation.processing.Generated;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CharacterDAO { //cs
 
@@ -76,5 +78,29 @@ public class CharacterDAO { //cs
         catch (Exception e){System.out.println(e);} return false;
     }
 
+    // 5. 친구 목록 출력
+    public ArrayList<FreindsDto> friendsPrint(int loginCno){
+        ArrayList<FreindsDto> list = new ArrayList<>();
+        try{
+            String sql = "select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '"+loginCno+"'";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                int tockey = rs.getInt("ckey");
+                String  tocnickname = rs.getString("cnickname");
+                FreindsDto freindsDto = new FreindsDto();
+                freindsDto.setTockey(tockey);
+                freindsDto.setTocnickname(tocnickname);
+                list.add(freindsDto);
+            }   // while end
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }   // friendsPrint() end
 
+    // 6-1 친구 추가
+    public boolean addFriends(String newFreinds , int loginCno){
+        return false;
+    }   // addFriends() end
 } //ce

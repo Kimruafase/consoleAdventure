@@ -1,7 +1,10 @@
 package view;
 
 
+import controller.CharacterController;
 import controller.MenuController;
+import model.dao.CharacterDAO;
+import model.dto.FreindsDto;
 import model.dto.MySkillDto;
 import model.dto.SkillDto;
 
@@ -18,7 +21,7 @@ public class MenuView {
     public void index2(){ //is
         while(true){ //ws
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t1. 캐릭터정보 2.던전 3.스킬정보 4.상점 5.종료");
+            System.out.println("\t1. 캐릭터정보 2.던전 3.스킬정보 4.상점 5. 내 친구 목록 6.종료");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             int ch = scan.nextInt();
 
@@ -26,7 +29,9 @@ public class MenuView {
             else if(ch == 2){godungeon();}
             else if(ch == 3){skillinfo();}
             else if(ch == 4){shop();}
-            else if(ch == 5){CharacterView.chview.index();}
+            else if (ch==5) {
+                friendsPrint();
+            } else if(ch == 6){CharacterView.chview.index();}
             else {
                 System.out.println("\n----------------------------------------------------------------------------------\n");
                 System.out.println("\t없는 기능 입니다.");
@@ -134,4 +139,42 @@ public class MenuView {
         }
 
     }
+    // 5. 친구 목록 출력
+    public void friendsPrint(){
+        ArrayList<FreindsDto> list = CharacterController.cController.friendsPrint();
+        if(list==null){
+            System.out.println(">> 등록된 친구가 없습니다.");
+        }
+        System.out.println("\n----------------------------------------------------------------------------------\n");
+        System.out.println("// ================== 내 친구 목록 ================== //");
+        System.out.println("캐릭터 닉네임");
+        list.forEach(dto -> {
+            System.out.printf("%s\n" , dto.getTocnickname());
+        });
+        System.out.println("\n----------------------------------------------------------------------------------\n");
+        friendsPage();
+    }   // friendsPrint() end
+
+    // 6. 친구 페이지
+    public void friendsPage(){
+        System.out.print(">> 0. 뒤로가가 1. 친구추가 ");
+        int ch = scan.nextInt();
+        if(ch==0){
+            index2();
+        } else if (ch==1) {
+            addFriends();
+        }
+    }   // friendsPage() end
+
+    // 6-1 친구 추가
+    public void addFriends(){
+        System.out.print(">> 추가할 친구의 닉네임을 입력하세요 : ");
+        String newFreinds = scan.next();
+        boolean result = CharacterController.cController.addFriends(newFreinds);
+        if(result){
+            System.out.println(">> 친구 추가 성공");
+        }else {
+            System.out.println(">> 해당 캐릭터가 존재하지 않습니다.");
+        }
+    }   // addFriends() end
 }

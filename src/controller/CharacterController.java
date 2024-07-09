@@ -2,6 +2,9 @@ package controller;
 
 import model.dao.CharacterDAO;
 import model.dto.CharacterDto;
+import model.dto.FreindsDto;
+
+import java.util.ArrayList;
 
 public class CharacterController {
     public static CharacterController cController = new CharacterController();
@@ -26,7 +29,6 @@ public class CharacterController {
     public boolean joinGame(model.dto.CharacterDto characterDTO){
         int result = CharacterDAO.characterDAO.joinGame(characterDTO);
 
-
         if (result != 0){loginCno = result;return true;}
         else {loginCno = 0;} return false;
     }
@@ -39,5 +41,14 @@ public class CharacterController {
         return result;
     }
 
+    // 5. 친구 목록 출력
+    public ArrayList<FreindsDto> friendsPrint(){
+        return CharacterDAO.characterDAO.friendsPrint(loginCno);
+    }   // friendsPrint() end
+
+    // 6-1 친구 추가
+    public boolean addFriends(String newFreinds){
+        return CharacterDAO.characterDAO.addFriends(newFreinds , loginCno);
+    }   // addFriends() end
 
 }
