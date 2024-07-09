@@ -18,7 +18,7 @@ public class MyAccountView {
     public void index(){
         while (true){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           0. 관리자모드 1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 5. 종료 ");
+            System.out.println("\t0. 관리자모드 1. 회원가입 2. 로그인 3. 아이디찿기 4. 비밀번호 찾기 5. 종료 ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             int ch = scan.nextInt();
             try{
@@ -35,17 +35,17 @@ public class MyAccountView {
                     findPWD();
                 } else if (ch==5) {
                     System.out.println("\n----------------------------------------------------------------------------------\n");
-                    System.out.println("           프로그램을 종료합니다.");
+                    System.out.println("\t프로그램을 종료합니다.");
                     System.out.println("\n----------------------------------------------------------------------------------\n");
                     break;
                 } else {
                     System.out.println("\n----------------------------------------------------------------------------------\n");
-                    System.out.println("           없는 기능 번호입니다.");
+                    System.out.println("\t없는 기능 번호입니다.");
                     System.out.println("\n----------------------------------------------------------------------------------\n");
                 }
             }catch (Exception e){
                 System.out.println("\n----------------------------------------------------------------------------------\n");
-                System.out.println("           잘못된 입력입니다. 초기메뉴로 돌아갑니다.");
+                System.out.println("\t잘못된 입력입니다. 초기메뉴로 돌아갑니다.");
                 System.out.println("\n----------------------------------------------------------------------------------\n");
                 scan = new Scanner(System.in);
             }   // try end
@@ -57,7 +57,7 @@ public class MyAccountView {
     public void index2(){
         while(true){        // 메뉴 설정을 종료되거나 오류가 생기기 전까지 반복하기 위해 while문
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           1. 로그아웃 2. 내정보 3. 회원수정 4. 회원탈퇴 5. 게임시작  ");   // 컨셉 상 설정한 메뉴를 입력 받기 위해 먼저 안내해준다.
+            System.out.println("\t1. 로그아웃 2. 내정보 3. 회원수정 4. 회원탈퇴 5. 게임시작  ");   // 컨셉 상 설정한 메뉴를 입력 받기 위해 먼저 안내해준다.
             System.out.println("\n----------------------------------------------------------------------------------\n");
             int ch = scan.nextInt();     // 위에 안내한 메뉴를 정수로 입력 받아 변수에 저장한다.
             if(ch==1){
@@ -74,12 +74,12 @@ public class MyAccountView {
                 CharacterView.chview.index();
             } else if (ch==6) {
                 System.out.println("\n----------------------------------------------------------------------------------\n");
-                System.out.println("           프로그램을 종료합니다.");
+                System.out.println("\t프로그램을 종료합니다.");
                 System.out.println("\n----------------------------------------------------------------------------------\n");
                 return;
             } else{
                 System.out.println("\n----------------------------------------------------------------------------------\n");
-                System.out.println("           없는 기능번호입니다.");
+                System.out.println("\t없는 기능번호입니다.");
                 System.out.println("\n----------------------------------------------------------------------------------\n");
             }   // if end
         }   // while end
@@ -89,7 +89,7 @@ public class MyAccountView {
     public void signup(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
         // 1. 입력
-        System.out.println(">> 회원가입 페이지 <<");                       // 어떤 페이지인지 안내
+        System.out.println("\t>> 회원가입 페이지 <<");                       // 어떤 페이지인지 안내
         // 회원가입 위해 받을 필드 안내 후 sql에 설계해둔 타입에 맞는 타입과 변수명 정해서 입력받아 저장.
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 아이디 : "); String aid = scan.next();
@@ -107,11 +107,11 @@ public class MyAccountView {
 
         if(result){         // 만약 result가 true이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원가입성공");    // 회원가입 성공
+            System.out.println("\t회원가입성공");    // 회원가입 성공
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {             // 만약 result가 false이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원가입실패");    // 회원가입 실패
+            System.out.println("\t회원가입실패");    // 회원가입 실패
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }   // if end
     }   // signup() end
@@ -119,7 +119,7 @@ public class MyAccountView {
     // 2. 로그인
     public void login(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           >> 로그인 페이지 <<");
+        System.out.println("\t>> 로그인 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 아이디 : "); String aid = scan.next();
         System.out.print(">> 비밀번호 : "); String apwd = scan.next();
@@ -131,12 +131,12 @@ public class MyAccountView {
         boolean result = MyAccountController.getInstance().login(myAccountDto);
         if(result) {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           로그인 성공");
+            System.out.println("\t로그인 성공");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             index2();
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           로그인 실패");
+            System.out.println("\t로그인 실패");
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }   // login() end
@@ -144,7 +144,7 @@ public class MyAccountView {
     // 3. 아이디찾기
     public void findID(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           >> 아이디찾기 페이지 <<");
+        System.out.println("\t>> 아이디찾기 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 이름 : "); String aname = scan.next();    // 이름 입력받아 String 타입 변수에 저장
         System.out.print(">> 연락처(-제외) : "); String anum = scan.next();
@@ -158,11 +158,11 @@ public class MyAccountView {
         String findID = MyAccountController.getInstance().findID(myAccountDto);
         if(findID != null){     // 만약 result 값이 null이 아니면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원아이디 : "+ findID);     // result에 찾은 아이디를 넣어놨으니까 찾은 아이디 출력
+            System.out.println("\t회원아이디 : "+ findID);     // result에 찾은 아이디를 넣어놨으니까 찾은 아이디 출력
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {                 // 만약 result 값이 null이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           동일한 회원 정보가 없습니다.");  // 입력한 회원 정보가 없어 오류임을 알려준다.
+            System.out.println("\t동일한 회원 정보가 없습니다.");  // 입력한 회원 정보가 없어 오류임을 알려준다.
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }   // if end
 
@@ -171,7 +171,7 @@ public class MyAccountView {
     // 4. 비밀번호찾기
     public void findPWD(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           >> 비밀번호 페이지 <<");
+        System.out.println("\t>> 비밀번호 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 아이디 : "); String aid = scan.next();    // 이름 입력받아 String 타입 변수에 저장
         System.out.print(">> 연락처(-제외) : "); String anum = scan.next();
@@ -185,11 +185,11 @@ public class MyAccountView {
         String findPWD = MyAccountController.getInstance().findPWD(myAccountDto);
         if(findPWD != null){     // 만약 result 값이 null이 아니면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원비밀번호 : "+ findPWD);     // result에 찾은 아이디를 넣어놨으니까 찾은 아이디 출력
+            System.out.println("\t회원비밀번호 : "+ findPWD);     // result에 찾은 아이디를 넣어놨으니까 찾은 아이디 출력
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {                 // 만약 result 값이 null이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           동일한 회원 정보가 없습니다.");  // 입력한 회원 정보가 없어 오류임을 알려준다.
+            System.out.println("\t동일한 회원 정보가 없습니다.");  // 입력한 회원 정보가 없어 오류임을 알려준다.
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }   // if end
     }   // findPWD() end
@@ -198,7 +198,7 @@ public class MyAccountView {
     public void logout(){
         MyAccountController.getInstance().logout();
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           로그아웃 성공 [초기메뉴로] ");
+        System.out.println("\t로그아웃 성공 [초기메뉴로] ");
         System.out.println("\n----------------------------------------------------------------------------------\n");
     }   // logout() end
 
@@ -208,7 +208,7 @@ public class MyAccountView {
         MyAccountDto myAccountDto = MyAccountController.getInstance().myInfo();
         if(myAccountDto == null){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원 정보가 없습니다. ");
+            System.out.println("\t회원 정보가 없습니다. ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             return;
         }
@@ -224,7 +224,7 @@ public class MyAccountView {
     // 7. 회원수정
     public void aUpdate(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           >> 회원정보 수정 페이지 <<");
+        System.out.println("\t>> 회원정보 수정 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 비밀번호 입력 : ");      // 회원 수정을 위한 현재 로그인 한 회원의 비밀번호 입력
         String confirmPwd = scan.next();         // 입력 받은 값 String 타입에 저장
@@ -232,7 +232,7 @@ public class MyAccountView {
         boolean confirm = MyAccountController.getInstance().confirmPw(confirmPwd);
         if(!confirm){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           비밀번호가 맞지 않습니다. ");
+            System.out.println("\t비밀번호가 맞지 않습니다. ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             return;
         }
@@ -247,11 +247,11 @@ public class MyAccountView {
 
         if(result){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원정보를 성공적으로 수정했습니다.");
+            System.out.println("\t회원정보를 성공적으로 수정했습니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원정보 수정에 실패했습니다.");
+            System.out.println("\t회원정보 수정에 실패했습니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }   // aUpdate() end
@@ -259,7 +259,7 @@ public class MyAccountView {
     // 8. 회원탈퇴
     public boolean aDelete(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println("           >> 회원 탈퇴 페이지 <<");
+        System.out.println("\t>> 회원 탈퇴 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print(">> 비밀번호 입력 : ");      // 회원 수정을 위한 현재 로그인 한 회원의 비밀번호 입력
         String confirmPwd = scan.next();         // 입력 받은 값 String 타입에 저장
@@ -267,14 +267,14 @@ public class MyAccountView {
         boolean confirm = MyAccountController.getInstance().confirmPw(confirmPwd);
         if(!confirm){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           비밀번호가 맞지 않습니다. ");
+            System.out.println("\t비밀번호가 맞지 않습니다. ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             return false;
         }
         boolean result = MyAccountController.getInstance().aDelete(confirmPwd);
         if(result){
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           회원탈퇴 성공 ");
+            System.out.println("\t회원탈퇴 성공 ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             return true;
         }else {

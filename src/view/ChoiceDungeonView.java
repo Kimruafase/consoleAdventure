@@ -14,7 +14,7 @@ public class ChoiceDungeonView {
     public void index3(){ //is
         while(true){ //ws
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("           1. 쉬움 2. 보통 3. 어려움 4. 난이도 설명 ");
+            System.out.println("\t1. 쉬움 2. 보통 3. 어려움 4. 난이도 설명 ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             int ch = scan.nextInt();
 
@@ -27,7 +27,7 @@ public class ChoiceDungeonView {
             }
             else {
                 System.out.println("\n----------------------------------------------------------------------------------\n");
-                System.out.println("           없는 기능 입니다.");
+                System.out.println("\t없는 기능 입니다.");
                 System.out.println("\n----------------------------------------------------------------------------------\n");
             }
         } //we

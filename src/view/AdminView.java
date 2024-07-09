@@ -22,7 +22,9 @@ public class AdminView {
         boolean adminLoginState = AdminController.getInstance().adminLoginState();
         while (true){
             if(!adminLoginState){
-                System.out.println(">> 관리자만입장가능합니다.");
+                System.out.println("\n----------------------------------------------------------------------------------\n");
+                System.out.println("\t>> 관리자만입장가능합니다.");
+                System.out.println("\n----------------------------------------------------------------------------------\n");
                 boolean result = adminLogin();
                 if(result){
                     adminMenu();
@@ -36,7 +38,7 @@ public class AdminView {
     // 메뉴버튼
     public void adminMenu(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
-        System.out.println(">> 0. 로그아웃 1. 회원관리 2. 게임관리 : ");
+        System.out.println("\t>> 0. 로그아웃 1. 회원관리 2. 게임관리 : ");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         int ch = scan.nextInt();
         if(ch==0){
@@ -52,13 +54,17 @@ public class AdminView {
     // 로그아웃
     public void adminLogout(){
         AdminController.getInstance().adminLogout();
-        System.out.println(">> 로그아웃 성공 [초기메뉴로]");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
+        System.out.println("\t>> 로그아웃 성공 [초기메뉴로]");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
     }   // adminLogout() end
 
     // 회원관리 페이지
     public void adminAccount(){
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("// ================== 회원관리 페이지 ================== //");
-        System.out.print(">> 0. 뒤로가기 1. 전체회원출력 2. 회원검색 : ");
+        System.out.println("\t>> 0. 뒤로가기 1. 전체회원출력 2. 회원검색  ");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         int ch = scan.nextInt();
         if(ch==0){
             adminIndex();     // 여기서 뒤로가면 회원관리할지 게임관리할지 메뉴로 돌아가야함 그런데 로그인은 되어있어야함.
@@ -75,7 +81,9 @@ public class AdminView {
         System.out.print(">> 관리자 비밀번호 : ");     String adminPw = scan.next();
         boolean result = AdminController.getInstance().adminLogin(adminID , adminPw);
         if(result){
-            System.out.println(">> 관리자 로그인 성공");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t>> 관리자 로그인 성공");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
             return true;
         }else {
             return false;
@@ -85,12 +93,14 @@ public class AdminView {
     // 회원전체 출력
     public void accountPrintAll(){
         ArrayList<MyAccountDto> list = AdminController.getInstance().accountPrintAll();
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("// ============================== 전체회원 ============================== //");
         System.out.println("회원번호  회원아이디  회원비밀번호  회원이름      연락처     생년월일     회원가입일");
         list.forEach(dto -> {
             System.out.printf("%3d %8s %10s %7s %13s %7s %s\n" , dto.getAkey() , dto.getAid() ,
                     dto.getApwd() , dto.getAname(),  dto.getAnum(), dto.getAbirth(), dto.getAdate());
         });
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         adminAccount();
     }   // accountPrintAll() end
 
@@ -109,7 +119,9 @@ public class AdminView {
             System.out.printf("%3d %8s %10s %7s %13s %7s %s\n" , dto.getAkey() , dto.getAid() ,
                     dto.getApwd() , dto.getAname(),  dto.getAnum(), dto.getAbirth(), dto.getAdate());
         });
-        System.out.print(">> 0. 뒤로가기 1. 회원정보수정 2. 회원정보삭제 : ");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
+        System.out.println("\t>> 0. 뒤로가기 1. 회원정보수정 2. 회원정보삭제 ");
+        System.out.println("\n----------------------------------------------------------------------------------\n");
         int ch = scan.nextInt();
         if(ch==0){
             adminAccount();
@@ -129,9 +141,13 @@ public class AdminView {
         boolean result = AdminController.getInstance().adminAccountUpdate(akey , anum);
 
         if(result){
-            System.out.println(">> 회원정보를 성공적으로 수정했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t>> 회원정보를 성공적으로 수정했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
-            System.out.println(">> 회원정보 수정에 실패했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t>> 회원정보 수정에 실패했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }   // adminAccountUpdate() end
 
@@ -141,9 +157,13 @@ public class AdminView {
         boolean result = AdminController.getInstance().adminAccountDelete(akey);
 
         if(result){
-            System.out.println(">> 회원정보를 성공적으로 삭제했습니다..");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t>> 회원정보를 성공적으로 삭제했습니다..");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
-            System.out.println(">> 회원정보 삭제에 실패했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
+            System.out.println("\t>> 회원정보 삭제에 실패했습니다.");
+            System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }   // adminAccountDelete() end
 }   // class end

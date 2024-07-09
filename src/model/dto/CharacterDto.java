@@ -8,22 +8,32 @@ public class CharacterDto {
     private String cnickname;
     private int chp;
     private int akey;
-    SkillDto SkillDto;
+    private SkillDto SkillDto;
     private int cHpChange;
     private String aid;
+    private int cExp;
+    private int cLevel;
+
 
     //생성자
     public CharacterDto(){
         this.chp = 100;
         this.cHpChange = 50;
         this.ckey = CharacterController.cController.loginCno;
+        this.cLevel = 1;
+        this.cExp = 20;
     }
 
-    public CharacterDto(int ckey, String cnickname, int chp, int akey) {
+    public CharacterDto(int ckey, String cnickname, int chp, int akey, model.dto.SkillDto skillDto, int cHpChange, String aid, int cExp, int cLevel) {
         this.ckey = ckey;
         this.cnickname = cnickname;
         this.chp = chp;
         this.akey = akey;
+        SkillDto = skillDto;
+        this.cHpChange = cHpChange;
+        this.aid = aid;
+        this.cExp = cExp;
+        this.cLevel = cLevel;
     }
 
     public CharacterDto(String cnickname){
@@ -42,6 +52,9 @@ public class CharacterDto {
                 ", akey=" + akey +
                 ", SkillDto=" + SkillDto +
                 ", cHpChange=" + cHpChange +
+                ", aid='" + aid + '\'' +
+                ", cExp=" + cExp +
+                ", cLevel=" + cLevel +
                 '}';
     }
 
@@ -102,5 +115,21 @@ public class CharacterDto {
 
     public void setAid(String aid) {
         this.aid = aid;
+    }
+
+    public int getcExp() {
+        return cExp;
+    }
+
+    public void setcExp(int cExp) {
+        this.cExp = cExp;
+    }
+
+    public int getcLevel() {
+        return cLevel;
+    }
+
+    public void setcLevel(int cLevel) {
+        this.cLevel = cLevel;
     }
 }
