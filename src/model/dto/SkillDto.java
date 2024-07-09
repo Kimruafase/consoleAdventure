@@ -6,17 +6,19 @@ public class SkillDto {
     private String skname;
     private String skinfo;
     private int skdamage;
+    private int skmoney;
 
     //  생성자
     public SkillDto(){
         this.skdamage = 20;
     }
 
-    public SkillDto(int skkey, String skname, String skinfo, int skdamage) {
+    public SkillDto(int skkey, String skname, String skinfo, int skdamage, int skmoney) {
         this.skkey = skkey;
         this.skname = skname;
         this.skinfo = skinfo;
         this.skdamage = skdamage;
+        this.skmoney = skmoney;
     }
 
     //  메소드(getter and setter, toString())
@@ -52,6 +54,10 @@ public class SkillDto {
         this.skdamage = skdamage;
     }
 
+    public int getSkmoney() {return skmoney;}
+
+    public void setSkmoney(int skmoney) {this.skmoney = skmoney;}
+
     @Override
     public String toString() {
         return "SkillDto{" +
@@ -59,6 +65,7 @@ public class SkillDto {
                 ", skname='" + skname + '\'' +
                 ", skinfo='" + skinfo + '\'' +
                 ", skdamage=" + skdamage +
+                ", skmoney=" + skmoney +
                 '}';
     }
 }

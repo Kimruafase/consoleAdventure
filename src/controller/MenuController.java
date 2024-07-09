@@ -1,6 +1,7 @@
 package controller;
 
 import model.dao.MenuDAO;
+import model.dto.CharacterDto;
 import model.dto.MySkillDto;
 import model.dto.SkillDto;
 
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 public class MenuController {
 
 public static MenuController MController = new MenuController();
+SkillDto skillDto = new SkillDto();
+CharacterDto characterDto = new CharacterDto();
 
     //1. 캐릭터 정보 함수
     public ArrayList<model.dto.CharacterDto> charinfo(){
@@ -34,5 +37,12 @@ public static MenuController MController = new MenuController();
     public boolean buyskill(int ch){
         int ckey = CharacterController.cController.loginCno;
         return MenuDAO.MDAO.buyskill(ch,ckey);
+    }
+
+    //5 스킬 구입 가격차감기능
+    public boolean getskill(){
+       int result = characterDto.getCmoney() - skillDto.getSkmoney();
+       return MenuDAO.MDAO.getskill(result,CharacterController.cController.loginCno);
+
     }
 }
