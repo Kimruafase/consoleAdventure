@@ -13,6 +13,7 @@ public class CharacterDto {
     private String aid;
     private int cExp;
     private int cLevel;
+    private int cmoney;
 
 
     //생성자
@@ -24,7 +25,7 @@ public class CharacterDto {
         this.cExp = 20;
     }
 
-    public CharacterDto(int ckey, String cnickname, int chp, int akey, model.dto.SkillDto skillDto, int cHpChange, String aid, int cExp, int cLevel) {
+    public CharacterDto(int ckey, String cnickname, int chp, int akey, model.dto.SkillDto skillDto, int cHpChange, String aid, int cExp, int cLevel, int cmoney) {
         this.ckey = ckey;
         this.cnickname = cnickname;
         this.chp = chp;
@@ -34,6 +35,7 @@ public class CharacterDto {
         this.aid = aid;
         this.cExp = cExp;
         this.cLevel = cLevel;
+        this.cmoney = cmoney;
     }
 
     public CharacterDto(String cnickname){
@@ -55,6 +57,7 @@ public class CharacterDto {
                 ", aid='" + aid + '\'' +
                 ", cExp=" + cExp +
                 ", cLevel=" + cLevel +
+                ", cmoney=" + cmoney +
                 '}';
     }
 

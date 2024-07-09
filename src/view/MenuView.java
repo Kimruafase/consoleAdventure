@@ -18,7 +18,7 @@ public class MenuView {
     public void index2(){ //is
         while(true){ //ws
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t1. 캐릭터정보 2.던전 3.스킬정보 4.상점 5.종료");
+            System.out.println("\t1. 캐릭터정보 2.던전 3.스킬정보 4.상점 5.친구목록 6. 종료");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             int ch = scan.nextInt();
 
@@ -26,7 +26,8 @@ public class MenuView {
             else if(ch == 2){godungeon();}
             else if(ch == 3){skillinfo();}
             else if(ch == 4){shop();}
-            else if(ch == 5){CharacterView.chview.index();}
+            else if(ch == 5){}
+            else if(ch == 6){CharacterView.chview.index();}
             else {
                 System.out.println("\n----------------------------------------------------------------------------------\n");
                 System.out.println("\t없는 기능 입니다.");
@@ -134,4 +135,6 @@ public class MenuView {
         }
 
     }
+
+
 }
