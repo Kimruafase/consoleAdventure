@@ -47,6 +47,7 @@ public class DungeonController {
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             getDungeonClearExp();
+            System.out.println("\n\t골드를 " + (10 * dungeonDtoDungeon.getDungeonDiff()) + "만큼 획득하셨습니다!");
             System.out.println("\t=============== GAME CLEAR ============== ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -249,7 +250,7 @@ public class DungeonController {
         // 변수에 저장 후 받은 경험치를 출력하고
         // DAO 의 경험치 업데이트 함수에 보냄
         int cExp = characterDto.getcExp();
-        System.out.println("\n\t경험치를 " + cExp + "만큼 획득하셨습니다.");
+        System.out.println("\n\t경험치를 " + cExp + "만큼 획득하셨습니다!");
         DungeonDao.getInstance().getDungeonClearExp(cExp,CharacterController.cController.loginCno);
     }
 
