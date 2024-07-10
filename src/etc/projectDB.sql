@@ -220,12 +220,15 @@ insert into freinds(fromckey, tockey) values (1,3);
 
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;
 
+select * from mycharacter ;
+
+select * from skill ;
+
 select * from freinds;
 drop table if exists freinds;
 
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '1' and state = 'false' ;
 
-
-
+update mycharacter set cmoney = 10000 where ckey = 1;
 
 

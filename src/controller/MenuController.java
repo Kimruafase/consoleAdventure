@@ -7,6 +7,7 @@ import model.dto.FreindsDto;
 import model.dto.MySkillDto;
 import model.dto.SkillDto;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class MenuController {
@@ -38,13 +39,28 @@ CharacterDto characterDto = new CharacterDto();
     //4-2 스킬 구입 기능
     public boolean buyskill(int ch){
         int ckey = CharacterController.cController.loginCno;
-        return MenuDAO.MDAO.buyskill(ch,ckey);
-    }
 
-    //5 스킬 구입 가격차감기능
-    public boolean getskill(){
-       int result = characterDto.getCmoney() - skillDto.getSkmoney();
-       return MenuDAO.MDAO.getskill(result,CharacterController.cController.loginCno);
+        // 유효성 검사
+            // 1. 현재 돈
+        int myMoney = MenuDAO.MDAO.minMoney(ckey);
+
+            // 2. 구매할 스킬 금액
+        int skillMoney = MenuDAO.MDAO.minskillmoney(ch);
+
+            // 3. 비교
+        if( myMoney >= skillMoney ){
+
+            // 스킬구매
+            boolean result =  MenuDAO.MDAO.buyskill(ch,ckey);
+            if( result ){
+                // 구매 성공시 소지금 차감
+                int mone = myMoney - skillMoney;
+                MenuDAO.MDAO.upMoney(mone,ckey);
+            }
+            return result;
+        }else{
+            return false;
+        }
 
     }
 
@@ -68,4 +84,14 @@ CharacterDto characterDto = new CharacterDto();
         return MenuDAO.MDAO.acceptRequest(fromckey);
     }   // acceptRequest() end
 
+    //7 증가
+    public void plusMoney( int money ){
+        int ckey = CharacterController.cController.loginCno;
+        MenuDAO.MDAO.plusMoney(money,ckey);
+    }
+
+    //8 감소
+    public  void minusMoney(){
+
+    }
 }

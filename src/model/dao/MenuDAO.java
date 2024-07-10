@@ -1,6 +1,7 @@
 package model.dao;
 
 import controller.MenuController;
+import model.dto.CharacterDto;
 import model.dto.FreindsDto;
 import model.dto.MySkillDto;
 import model.dto.SkillDto;
@@ -106,19 +107,6 @@ ResultSet rs;
         catch(Exception e){System.out.println(e);} return false;
     }
 
-    //5
-    public boolean getskill(int cmoney,int ckey){
-        try{
-            String sql = "update mycharacter set cmoney = ? where ckey = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,cmoney);
-            ps.setInt(2,ckey);
-            int count = ps.executeUpdate();
-            if (count == 1) {return true;}
-        }
-        catch (Exception e){System.out.println(e);} return false;
-    }
-
     // 5. 친구 목록 출력
     public ArrayList<FreindsDto> friendsPrint(int loginCno){
         ArrayList<FreindsDto> list = new ArrayList<>();
@@ -193,4 +181,62 @@ ResultSet rs;
         }
         return false;
     }   // acceptRequest() end
+
+    //7 증가
+    public boolean plusMoney(int pm, int ckey){
+        try{
+            String sql = "update mycharacter set cmoney = cmoney + ? where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,pm);
+            ps.setInt(2,ckey);
+            int count = ps.executeUpdate();
+            if(count == 1){return true;}
+        }
+        catch (Exception e) {System.out.println(e);} return false;
+    }
+
+    //8 감소
+    public  boolean upMoney(int mone, int ckey){
+        try{
+            String sql = "update mycharacter set cmoney = ? where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,mone);
+            ps.setInt(2, ckey);
+            int count = ps.executeUpdate();
+            if(count == 1){return true;}
+
+        } catch (Exception e){System.out.println(e);} return  false;
+    }
+
+    //8-1
+    public int minMoney(int ckey){
+        int mmm = 0;
+        try{
+            String sql = "select * from mycharacter where ckey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, ckey);
+            rs = ps.executeQuery();
+            if (rs.next()){
+                mmm = rs.getInt("cmoney");
+            }
+
+        }
+        catch (Exception e){System.out.println(e);}  return mmm;
+    }
+
+    //8-2
+    public int minskillmoney(int ch){
+        int mmm = 0;
+        try{
+            String sql = "select * from skill where skkey = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, ch);
+            rs = ps.executeQuery();
+            if (rs.next()){
+                mmm = rs.getInt("skmoney");
+            }
+
+        }
+        catch (Exception e){System.out.println(e);}  return mmm;
+    }
 }

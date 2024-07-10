@@ -215,20 +215,6 @@ public class MenuView {
         friendsPage();
     }   // acceptRequest() end
 
-    //5 getskill
-    public void getskill(){
-        boolean result = MenuController.MController.getskill();
-        if (result){
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t스킬 구매 성공");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }
-        else {
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t스킬 구매 실패");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }
-    }
 
 
 }

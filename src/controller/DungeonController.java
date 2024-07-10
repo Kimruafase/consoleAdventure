@@ -39,6 +39,7 @@ public class DungeonController {
             characterDto.setChp(100);
             dungeonDtoDungeon.setDungeonState(0);
             characterDto.setcExp(20 * dungeonDtoDungeon.getDungeonDiff());
+            MenuController.MController.plusMoney( 10 * dungeonDtoDungeon.getDungeonDiff() );
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             getDungeonClearExp();
