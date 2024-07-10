@@ -224,6 +224,11 @@ select * from friends;
 drop table if exists friends;
 
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '1' and state = '1' ;
+select * from mycharacter ;
+
+select * from skill ;
+
+
 
 -- delete from freinds where tockey = (select tockey from(select mycharacter.ckey from freinds freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where cnickname = '네이버')as a_t) and fromckey = 1;
 
@@ -237,5 +242,6 @@ WHERE (f.fromckey = 2 OR f.tockey = 2)
 AND f.state = '0';
 
 
+update mycharacter set cmoney = 10000 where ckey = 1;
 
 

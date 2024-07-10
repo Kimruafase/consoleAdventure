@@ -14,8 +14,6 @@ public class CharacterDto {
     private int cExp;
     private int cLevel;
     private int cmoney;
-
-
     //생성자
     public CharacterDto(){
         this.chp = 100;

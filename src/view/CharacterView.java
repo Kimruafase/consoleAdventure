@@ -41,9 +41,9 @@ public class CharacterView { //cs
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.print("닉네임 입력 : "); String nickname = scan.next();
 
-        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname);
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname); //characterDTO에(nickname)을 담아 객체 생성
 
-        boolean result = CharacterController.cController.createChar(characterDTO);
+        boolean result = CharacterController.cController.createChar(characterDTO); //컨트롤에서 boolean 타입으로 반환
 
         if (result){
             System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -62,9 +62,9 @@ public class CharacterView { //cs
     public void joinGame(){
         System.out.print("캐릭터 닉네임 입력 : "); String nickname = scan.next();
 
-        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname);
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(nickname);//characterDTO에 nickname을 입력하여 객체 생성
 
-        boolean reslut = CharacterController.cController.joinGame(characterDTO);
+        boolean reslut = CharacterController.cController.joinGame(characterDTO); // 컨트롤러에서 boolean타입으로 반환
         if(reslut){
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t>>>>> 접속성공 <<<<<");
@@ -82,9 +82,9 @@ public class CharacterView { //cs
     public void delChar(){
         System.out.print("삭제할 캐릭터 입력 : "); String delch = scan.next();
 
-        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(delch);
+        model.dto.CharacterDto characterDTO = new model.dto.CharacterDto(delch); //characterDTO 에 delch(삭제할번호)를 담은 객체 생성
 
-        boolean result = CharacterController.cController.delChar(characterDTO);
+        boolean result = CharacterController.cController.delChar(characterDTO); //컨트롤에서 boolean 타입으로 반환
         if (result){
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t삭제 성공");

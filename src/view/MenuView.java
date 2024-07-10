@@ -18,7 +18,7 @@ public class MenuView {
 
     public Scanner scan = new Scanner(System.in);
 
-    //0 접속 성공 초기화면
+    //0 캐릭터 접속 성공시 초기화면
     public void index2(){ //is
         while(true){ //ws
             System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -42,14 +42,14 @@ public class MenuView {
     } //ie
 
     //1. 캐릭터 정보 함수
-    public void charinfo(){
+    public void charinfo(){//1s
         ArrayList<model.dto.CharacterDto> result = MenuController.MController.charinfo();
 
-        if (result.isEmpty()){
+        if (result.isEmpty()){//result가 공백 값이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t없는 정보입니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
-        }else {
+        }else { //result 가 존재하는 값이면
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t닉네임  HP  소지금");
             result.forEach(charinfo ->{
@@ -58,16 +58,16 @@ public class MenuView {
             DungeonView.getInstance().characterLevelAndExp();
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
-    }
+    }//1e
     //2. 던전 메뉴 이동 함수
-    public void godungeon(){
+    public void godungeon(){ //2s
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("\t던전으로 이동합니다");
         System.out.println("\n----------------------------------------------------------------------------------\n");
         ChoiceDungeonView.choiceDungeonView.index3();
-    }
+    } //2e
     //3. 스킬정보 함수
-    public void skillinfo(){
+    public void skillinfo(){//3s
         ArrayList<MySkillDto> result = MenuController.MController.skillinfo();
 
         if (result.isEmpty()){
@@ -82,10 +82,10 @@ public class MenuView {
                 System.out.println("==================================================");
             });
         }
-    }
+    }//3e
 
     //4. 상점 기능 함수
-    public void shop(){
+    public void shop(){//4s
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("\t1.스킬목록 2.스킬구입 ");
         System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -97,10 +97,10 @@ public class MenuView {
             System.out.println("\t없는 기능입니다.");
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
-    }
+    }//4e
 
     //4-1 스킬 목록 기능
-    public void showshopskill(){
+    public void showshopskill(){//4-1s
         ArrayList<SkillDto> result = MenuController.MController.showshopskill();
 
         if (result.isEmpty()){
@@ -118,10 +118,10 @@ public class MenuView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
             shop();//
         }
-    }
+    }//4-1e
 
     //4-2 스킬 구입 기능
-    public void buyskill(){
+    public void buyskill(){//4-2s
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("\t구매할 스킬 번호를 입력하세요 ");
         System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -142,20 +142,6 @@ public class MenuView {
 
     }
 
-    //5 getskill
-    public void getskill(){
-        boolean result = MenuController.MController.getskill();
-        if (result){
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t스킬 구매 성공");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }
-        else {
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t스킬 구매 실패");
-            System.out.println("\n----------------------------------------------------------------------------------\n");
-        }
-    }
 
 
 }
