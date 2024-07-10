@@ -4,6 +4,7 @@ public class FreindsDto {
     private int fkey;
     private int fromckey;
     private int tockey;
+    private String fromnickname;
     private String tocnickname;
 
     public FreindsDto(){}
@@ -44,5 +45,13 @@ public class FreindsDto {
 
     public void setTocnickname(String tocnickname) {
         this.tocnickname = tocnickname;
+    }
+
+    public String getFromnickname() {
+        return fromnickname;
+    }
+
+    public void setFromnickname(String fromnickname) {
+        this.fromnickname = fromnickname;
     }
 }

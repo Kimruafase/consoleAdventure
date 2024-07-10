@@ -48,24 +48,4 @@ CharacterDto characterDto = new CharacterDto();
 
     }
 
-    // 5. 친구 목록 출력
-    public ArrayList<FreindsDto> friendsPrint(){
-        return MenuDAO.MDAO.friendsPrint(CharacterController.cController.loginCno);
-    }   // friendsPrint() end
-
-    // 6-1 친구 추가
-    public boolean addFriends(String newFreinds){
-        return MenuDAO.MDAO.addFriends(newFreinds , CharacterController.cController.loginCno);
-    }   // addFriends() end
-
-    // 6-2 받은 친구 요청
-    public  ArrayList<FreindsDto> receivedFriends(){
-        return MenuDAO.MDAO.receivedFriends(CharacterController.cController.loginCno);
-    }   // receivedFriends() end
-
-    // 6-3 친구요청 수락
-    public boolean acceptRequest(int fromckey){
-        return MenuDAO.MDAO.acceptRequest(fromckey);
-    }   // acceptRequest() end
-
 }

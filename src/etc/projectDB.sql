@@ -69,7 +69,7 @@ create table admin(
 	primary key(adkey)
 );
 
-create table freinds(
+create table friends(
 fkey int auto_increment,
 primary key(fkey),
 state boolean default false, 
@@ -215,16 +215,26 @@ insert into Myskill(ckey, skkey) values (3,3);
 select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
 select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
 
-insert into freinds(fromckey, tockey) values (1,2);
-insert into freinds(fromckey, tockey) values (1,3);
+insert into friends(fromckey, tockey) values (1,2);
+insert into friends(fromckey, tockey) values (1,3);
 
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;
 
-select * from freinds;
-drop table if exists freinds;
+select * from friends;
+drop table if exists friends;
 
-select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '1' and state = 'false' ;
+select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '1' and state = '1' ;
 
+-- delete from freinds where tockey = (select tockey from(select mycharacter.ckey from freinds freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where cnickname = '네이버')as a_t) and fromckey = 1;
+
+-- select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where (fromckey = 1 or tockey = 1) and state = '0';
+
+SELECT f.*, from_char.*, to_char.*
+FROM friends f
+INNER JOIN mycharacter from_char ON f.fromckey = from_char.ckey
+INNER JOIN mycharacter to_char ON f.tockey = to_char.ckey
+WHERE (f.fromckey = 2 OR f.tockey = 2)
+AND f.state = '0';
 
 
 
