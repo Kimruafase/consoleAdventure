@@ -72,8 +72,9 @@ create table admin(
 create table freinds(
 fkey int auto_increment,
 primary key(fkey),
+state boolean default false, 
 fromckey int,
-tockey int,
+tockey int not null,
 foreign key(fromckey) references mycharacter(ckey), #내 캐릭터키랑
 foreign key(tockey) references mycharacter(ckey) #상대방 캐릭터키
 );
@@ -218,3 +219,13 @@ insert into freinds(fromckey, tockey) values (1,2);
 insert into freinds(fromckey, tockey) values (1,3);
 
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;
+
+select * from freinds;
+drop table if exists freinds;
+
+select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = '1' and state = 'false' ;
+
+
+
+
+
