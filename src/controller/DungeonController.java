@@ -197,13 +197,24 @@ public class DungeonController {
     public void characterLevelAndExp(){
         int cExp = DungeonDao.getInstance().characterLevelAndExp(CharacterController.cController.loginCno);
         int cLevel = (int)(cExp / 100);
-        characterDto.setcLevel(characterDto.getcLevel()+cLevel);
+        characterDto.setcLevel(characterDto.getcLevel() + cLevel);
+        System.out.println("\n\t레벨");
+        System.out.println("\t" + characterDto.getcLevel());
     }
 
     //  10. 던전 클리어 후 경험치 추가 함수
     public void getDungeonClearExp(){
         int cExp = characterDto.getcExp();
-        System.out.println("\t경험치를 " + cExp + "만큼 획득하셨습니다.");
+        System.out.println("\n\t경험치를 " + cExp + "만큼 획득하셨습니다.");
         DungeonDao.getInstance().getDungeonClearExp(cExp,CharacterController.cController.loginCno);
     }
+
+    //  11. 레벨업 함수
+//    public void levelUp(){
+//        characterDto.setcLevel(characterDto.getcLevel() + 1);
+//        DungeonDao.getInstance().levelUp(CharacterController.cController.loginCno);
+//        System.out.println("\n\t레벨");
+//        System.out.println("\t"+characterDto.getcLevel());
+//    }
+
 }

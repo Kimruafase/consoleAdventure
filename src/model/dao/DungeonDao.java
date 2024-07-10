@@ -126,4 +126,20 @@ public class DungeonDao {
         }
         return false;
     }
+
+    //  11. 레벨업 함수
+//    public boolean levelUp(int cKey){
+//        try{
+//            String sql = "update mycharacter set cexp = cexp - 100 where ckey = ?";
+//            ps = conn.prepareStatement(sql);
+//            ps.setInt(1,cKey);
+//            int count = ps.executeUpdate();
+//            if(count == 1){
+//                return true;
+//            }
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+//        return false;
+//    }
 }

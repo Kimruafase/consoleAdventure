@@ -4,6 +4,7 @@ package view;
 import controller.CharacterController;
 import controller.MenuController;
 import model.dao.CharacterDAO;
+import model.dto.CharacterDto;
 import model.dto.FreindsDto;
 import model.dto.MySkillDto;
 import model.dto.SkillDto;
@@ -50,11 +51,11 @@ public class MenuView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t닉네임  HP  소지금  레벨");
-            DungeonView.getInstance().characterLevelAndExp();
+            System.out.println("\t닉네임  HP  소지금");
             result.forEach(charinfo ->{
-                System.out.printf("\t%s %d   %d %d\n" ,charinfo.getCnickname(), charinfo.getChp() ,charinfo.getCmoney(),charinfo.getcLevel());
+                System.out.printf("\t%s %d   %d \n" ,charinfo.getCnickname(), charinfo.getChp() ,charinfo.getCmoney());
             });
+            DungeonView.getInstance().characterLevelAndExp();
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }
     }
