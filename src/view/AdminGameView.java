@@ -269,11 +269,13 @@ public class AdminGameView {
         scan.nextLine();
         System.out.print(">> 추가할 스킬의 정보 : "); String skinfo = scan.nextLine();
         System.out.print(">> 추가할 스킬의 데미지 : ");    int skdamage = scan.nextInt();
+        System.out.print(">> 추가할 스킬의 금액 : ");    int skmoney = scan.nextInt();
 
         SkillDto skillDto = new SkillDto();
         skillDto.setSkname(skname);
         skillDto.setSkinfo(skinfo);
         skillDto.setSkdamage(skdamage);
+        skillDto.setSkmoney(skmoney);
 
         boolean result = AdminGameController.getInstance().addSkill(skillDto);
         if(result){
@@ -294,11 +296,13 @@ public class AdminGameView {
         scan.nextLine();
         System.out.print(">> 수정할 스킬의 새로운 정보 : "); String skinfo = scan.nextLine();
         System.out.print(">> 수정할 스킬의 새로운 데미지 : ");  int skdamage = scan.nextInt();
+        System.out.print(">> 수정할 스킬의 새로운 금액 : ");   int skmoney = scan.nextInt();
 
         SkillDto skillDto = new SkillDto();
         skillDto.setSkkey(skkey);
         skillDto.setSkinfo(skinfo);
         skillDto.setSkdamage(skdamage);
+        skillDto.setSkmoney(skmoney);
 
         boolean result = AdminGameController.getInstance().updateSkill(skillDto);
         if(result){

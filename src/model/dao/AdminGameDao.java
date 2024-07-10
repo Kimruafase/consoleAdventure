@@ -154,11 +154,12 @@ public class AdminGameDao {
     // 4-3. 스킬추가
     public boolean addSkill(SkillDto skillDto){
         try{
-            String sql = "insert into skill(skname,skinfo,skdamage) values (?, ?, ?)";
+            String sql = "insert into skill(skname,skinfo,skdamage,skmoney) values (?, ?, ? , ?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1,skillDto.getSkname());
             ps.setString(2,skillDto.getSkinfo());
             ps.setInt(3,skillDto.getSkdamage());
+            ps.setInt(4,skillDto.getSkmoney());
             int count = ps.executeUpdate();
             if(count==1){
                 return true;
@@ -172,11 +173,12 @@ public class AdminGameDao {
     // 4-4. 스킬수정
     public boolean updateSkill(SkillDto skillDto){
         try{
-            String sql = "update skill set skinfo = ? , skdamage = ? where skkey = ?";
+            String sql = "update skill set skinfo = ? , skdamage = ? , skmoney = ? where skkey = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1,skillDto.getSkinfo());
             ps.setInt(2,skillDto.getSkdamage());
-            ps.setInt(3,skillDto.getSkkey());
+            ps.setInt(3,skillDto.getSkmoney());
+            ps.setInt(4,skillDto.getSkkey());
             int count = ps.executeUpdate();
             if(count==1){
                 return true;
