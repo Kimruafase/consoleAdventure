@@ -30,14 +30,17 @@ public class FriendsDao {
     }
     // 5. 친구 목록 출력
     public ArrayList<String > friendsPrint(int loginCno){
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();                                         // 접속한 캐릭터의 닉네임을 제외하고 출력 그리고 닉네임만 가져오면 되므로 ArrayList<String> 으로 생성
         try{
-            String sql = "SELECT f.*, from_char.*, to_char.*\n" +
+            String sql = "SELECT f.*, from_char.*, to_char.*\n" +                           // friends와 mycharacter 테이블을 조인하여 특정 조건에 맞는 데이터 가져오기
+                    // friends f는 friends 테이블을 f라는 별칭으로 사용
+                    // mycharacter from_char는 mycharacter 테이블을 from_char라는 별칭으로 사용
+                    // mycharacter to_char는 mycharacter 테이블을 to_char라는 별칭으로 사용
                     "FROM friends f\n" +
                     "INNER JOIN mycharacter from_char ON f.fromckey = from_char.ckey\n" +
                     "INNER JOIN mycharacter to_char ON f.tockey = to_char.ckey\n" +
-                    "WHERE (f.fromckey = '"+loginCno+"' OR f.tockey = '"+loginCno+"')\n" +
-                    "AND f.state = '1'";
+                    "WHERE (f.fromckey = '"+loginCno+"' OR f.tockey = '"+loginCno+"')\n" +  // friends 테이블에서 fromckey 또는 tockey가 loginCno 값과 같은 경우 선택
+                    "AND f.state = '1'";                                                    // 그리고 friends 테이블에서 state 열이 '1'인 경우를 선택
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
@@ -45,10 +48,10 @@ public class FriendsDao {
                 int fromckey = rs.getInt(5);
                 int tockey = rs.getInt(11);
                 String name = "";
-                if(fromckey == loginCno ){
-                    name = rs.getString(12);
-                }else {
-                    name = rs.getNString(6);
+                if(fromckey == loginCno ){                                                  // 만약 fromckey가 loginCno가 같으면
+                    name = rs.getString(12);                                    // tockey의 닉네임만 가져오기
+                }else {                                                                     // 아니면 내가 tockey인 경우이니까
+                    name = rs.getNString(6);                                    // fromckey의 닉네임 가져오기
                 }
                 list.add(name);
             }   // while end
