@@ -47,7 +47,7 @@ public class DungeonController {
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t[[던전을 클리어하셨습니다! 축하드립니다!]]\n");
             getDungeonClearExp();
-            System.out.println("\n\t골드를 " + (10 * dungeonDtoDungeon.getDungeonDiff()) + "만큼 획득하셨습니다!");
+            System.out.println("\n\t골드를 " + (10 * dungeonDtoDungeon.getDungeonDiff()) + "만큼 획득하셨습니다!\n");
             System.out.println("\t=============== GAME CLEAR ============== ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\n----------------------------------------------------------------------------------\n");
