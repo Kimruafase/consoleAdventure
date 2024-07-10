@@ -41,14 +41,4 @@ public class CharacterController {
         return result;
     }
 
-    // 5. 친구 목록 출력
-    public ArrayList<FreindsDto> friendsPrint(){
-        return CharacterDAO.characterDAO.friendsPrint(loginCno);
-    }   // friendsPrint() end
-
-    // 6-1 친구 추가
-    public boolean addFriends(String newFreinds){
-        return CharacterDAO.characterDAO.addFriends(newFreinds , loginCno);
-    }   // addFriends() end
-
 }
