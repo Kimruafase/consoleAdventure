@@ -238,9 +238,9 @@ public class AdminGameView {
         ArrayList<SkillDto> list = AdminGameController.getInstance().skillAllPrint();
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("// ==================== 전체 스킬 ==================== //");
-        System.out.println("스킬번호  스킬이름  스킬정보  스킬데미지 스킬금액 ");
+        System.out.println("스킬번호  스킬이름  스킬정보   데미지  스킬금액 ");
         list.forEach(dto -> {
-            System.out.printf("%3d %8s %s %d %d \n" , dto.getSkkey() , dto.getSkname() , dto.getSkinfo() , dto.getSkdamage() , dto.getSkmoney());
+            System.out.printf("%3d %6s %4s %d %4d \n" , dto.getSkkey() , dto.getSkname() , dto.getSkinfo() , dto.getSkdamage() , dto.getSkmoney());
         });
         System.out.println("\n----------------------------------------------------------------------------------\n");
         adminSkill2();
