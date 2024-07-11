@@ -11,6 +11,7 @@ drop table if exists monster;
 drop table if exists skill;
 drop table if exists Myskill;
 drop table if exists admin;
+drop table if exists friends;
 
 create table myaccount(
 	akey int auto_increment,
@@ -85,6 +86,7 @@ select * from monster;
 select * from skill;
 select * from Myskill;
 select * from admin;
+select * from friends;
 
 #테스트용
 insert into admin(adid,adpwd) values ('admin','admin');
@@ -212,12 +214,12 @@ insert into Myskill(ckey, skkey) values (1,1);
 insert into Myskill(ckey, skkey) values (2,1);
 insert into Myskill(ckey, skkey) values (3,3);
 
-select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
-select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
+-- select * from mycharacter inner join myaccount on mycharacter.akey = myaccount.akey;
+-- select *from Myskill inner join skill on Myskill.skkey = skill.skkey where ckey = 1 and skname = '나';
 
-insert into friends(fromckey, tockey) values (1,2);
-insert into friends(fromckey, tockey) values (1,3);
-
+-- insert into friends(fromckey, tockey) values (1,2);
+-- insert into friends(fromckey, tockey) values (1,3);
+/*
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;
 
 select * from friends;
@@ -245,5 +247,5 @@ AND f.state = '0';
 
 
 update mycharacter set cmoney = 10000 where ckey = 1;
-
+*/
 
