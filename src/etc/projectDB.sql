@@ -228,6 +228,8 @@ select * from mycharacter ;
 
 select * from skill ;
 
+update mycharacter set cexp = 90 where ckey = 1;
+
 
 
 -- delete from freinds where tockey = (select tockey from(select mycharacter.ckey from freinds freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where cnickname = '네이버')as a_t) and fromckey = 1;
