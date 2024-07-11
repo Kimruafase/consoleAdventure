@@ -219,6 +219,8 @@ insert into Myskill(ckey, skkey) values (3,3);
 
 -- insert into friends(fromckey, tockey) values (1,2);
 -- insert into friends(fromckey, tockey) values (1,3);
+update mycharacter set cexp = 90 where ckey = 1;
+
 /*
 select * from freinds inner join mycharacter on freinds.tockey = mycharacter.ckey where fromckey = 1;
 
@@ -230,7 +232,7 @@ select * from mycharacter ;
 
 select * from skill ;
 
-update mycharacter set cexp = 90 where ckey = 1;
+
 
 
 
