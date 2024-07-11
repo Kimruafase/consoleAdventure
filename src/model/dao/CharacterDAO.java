@@ -42,11 +42,12 @@ public class CharacterDAO { //cs
     } //cce
 
     //2. 캐릭터 접속함수
-    public int joinGame(model.dto.CharacterDto characterDTO){
+    public int joinGame(model.dto.CharacterDto characterDTO,int akey){
         try{ //ts
-            String sql = "select * from mycharacter where cnickname = ?";
+            String sql = "select * from mycharacter where cnickname = ? and akey = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1,characterDTO.getCnickname()); //charDTO에 저장된 nickname이 동일한지 유효성검사
+            ps.setInt(2,akey);
             rs = ps.executeQuery();
 
             if (rs.next()){return rs.getInt("ckey");}   //rs에 값이 존재하면 ckey를 반환

@@ -67,9 +67,7 @@ public class MyAccountView {
             }else if(ch==3){
                 aUpdate();
             }else if(ch==4) {
-                if(aDelete()){
-                    logout();   return;
-                }
+                aDelete();
             } else if (ch==5) {
                 CharacterView.chview.index();
             } else if (ch==6) {
@@ -257,7 +255,7 @@ public class MyAccountView {
     }   // aUpdate() end
 
     // 8. 회원탈퇴
-    public boolean aDelete(){
+    public void aDelete(){
         System.out.println("\n----------------------------------------------------------------------------------\n");
         System.out.println("\t>> 회원 탈퇴 페이지 <<");
         System.out.println("\n----------------------------------------------------------------------------------\n");
@@ -269,16 +267,16 @@ public class MyAccountView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t비밀번호가 맞지 않습니다. ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            return false;
+            index2();
         }
         boolean result = MyAccountController.getInstance().aDelete(confirmPwd);
         if(result){
             System.out.println("\n----------------------------------------------------------------------------------\n");
             System.out.println("\t회원탈퇴 성공 ");
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            return true;
+            index();
         }else {
-            return false;
+            index2();
         }
     }   // aDelete() end
     // test

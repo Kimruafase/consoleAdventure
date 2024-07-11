@@ -87,7 +87,7 @@ ResultSet rs;
                 skillDto.setSkname(rs.getString("skname")); //skillDTO에 set하여 skname저장
                 skillDto.setSkinfo(rs.getString("skinfo")); //skillDTO에 set하여 skinfo저장
                 skillDto.setSkdamage(rs.getInt("skdamage")); //skillDTo에 set하여 skdamage저장
-
+                skillDto.setSkmoney(rs.getInt("skmoney"));
                 list.add(skillDto); //리스트에 skilldto 추가
             }
         }

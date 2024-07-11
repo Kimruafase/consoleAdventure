@@ -27,7 +27,7 @@ public class CharacterController {
 
     //2. 캐릭터 접속함수
     public boolean joinGame(model.dto.CharacterDto characterDTO){
-        int result = CharacterDAO.characterDAO.joinGame(characterDTO);
+        int result = CharacterDAO.characterDAO.joinGame(characterDTO,MyAccountController.getInstance().loginAkey);
 
         if (result != 0){loginCno = result;return true;} //유효성 검사 로그인한 캐릭터 넘버가 0이 아니면 로그인 상태
         else {loginCno = 0;} return false; //그게 아니면 로그아웃 상태

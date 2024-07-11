@@ -109,11 +109,11 @@ public class MenuView {
             System.out.println("\n----------------------------------------------------------------------------------\n");
         }else {
             System.out.println("\n----------------------------------------------------------------------------------\n");
-            System.out.println("\t스킬 이름 \t 스킬 설명 \t\t 스킬 데미지");
-            System.out.println("================================================");
+            System.out.println("\t스킬 이름 \t 스킬 설명 \t\t 스킬 데미지 \t\t 스킬 가격");
+            System.out.println("==========================================================");
             result.forEach(showskill -> {
-                System.out.printf("\t%d %-10s %10s%10d \n",showskill.getSkkey(), showskill.getSkname(), showskill.getSkinfo(), showskill.getSkdamage());
-                System.out.println("==================================================");
+                System.out.printf("\t%d %-10s %10s%10d %10d\n",showskill.getSkkey(), showskill.getSkname(), showskill.getSkinfo(), showskill.getSkdamage(),showskill.getSkmoney());
+                System.out.println("============================================================");
             });
             System.out.println("\n----------------------------------------------------------------------------------\n");
             shop();//
